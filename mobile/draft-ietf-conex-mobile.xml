@@ -319,116 +319,6 @@
     </section>
 
 
-    <section title="Overview of 3GPP's Evolved Packet System (EPS)">
-
-      <t>
-	This section provides an overview of 3GPP's "Evolved Packet
-	System" (EPS <xref target="3GPP.36.300"/>, <xref
-	target="3GPP.23.401"/>) as a specific example of a mobile
-	communication architecture. Of course other architectures
-	exist but the EPS is used as one example to demonstrate the
-	applicability of congestion exposure concepts and mechanisms.
-      </t>
-
-      <t>
-	The EPS architecture and some of its standardized interfaces
-	are depicted in Figure 1. The EPS provides IP connectivity to
-	user equipment (UE) (i.e., mobile nodes) and access to
-	operator services, such as global Internet access and voice
-	communications. The EPS comprises the radio access network
-	called evolved UMTS Terrestrial Radio Access Network (E-UTRAN)
-	and the core network called Evolved Packet Core (EPC). QoS is
-	supported through an EPS bearer concept, providing <!--
-	hierarchical --> bindings to resource reservation within the
-	network.
-      </t>
-      
-      <t>
-	The evolved NodeB (eNB), the Long Term Evolution (LTE) base
-	station, is part of the access network that provides radio
-	resource management, header compression, security and
-	connectivity to the core network through the S1 interface. In
-	an LTE network, the control plane signaling traffic and the
-	data traffic are handled separately. The eNBs transmit the
-	control traffic and data traffic separately via two logically
-	separate interfaces.
-      </t>
-      
-      <t>
-	The Home Subscriber Server, HSS, is a database that contains
-	user subscriptions and QoS profiles. The Mobility Management
-	Entity, MME, is responsible for mobility management, user
-	authentication, bearer establishment and modification and
-	maintenance of the UE context.
-      </t>
-      <t>
-	The Serving gateway, S-GW, is the mobility anchor and
-	manages the user plane data tunnels during the inter-eNB
-	handovers. It tunnels all user data packets and buffers downlink IP 
-	packets destined for UEs that happen to be in idle mode.
-      </t>
-      <t>
-	The Packet Data Network (PDN) Gateway, P-GW, is responsible
-	for IP address allocation to the UE and is a tunnel endpoint
-	for user and control plane protocols. It is also responsible
-	for charging, packet filtering, and policy-based control of
-	flows. It interconnects the mobile network to external IP
-	networks, e.g. the Internet.
-      </t>
-      <t>
-	In this architecture, data packets are not sent directly on an
-	IP network between the eNB and the gateways. Instead, every
-	packet is tunneled over a tunneling protocol - the GPRS
-	Tunneling Protocol (GTP <xref target="3GPP.29.060"/>) over
-	UDP/IP. A GTP path is identified in each node with the IP
-	address and a UDP port number on the eNB/gateways. The GTP
-	protocol carries both the data traffic (GTP-U tunnels) and the
-	control traffic (GTP-C tunnels <xref
-	target="3GPP.29.274"/>). Alternatively Proxy Mobile IP
-	(PMIPv6) is used on the S5 interface between S-GW and P-GW.
-      </t>
-      <t>
-	The above is very different from an end-to-end path on the
-	Internet where the packet forwarding is performed at the IP
-	level. Importantly, we observe that these tunneling protocols
-	give the operator a large degree of flexibility to control the
-	congestion mechanism incorporated with the GTP/PMIPv6 protocols.
-      </t>
-  
-	<figure anchor="fig1" title="EPS architecture overview (Roaming Case)" >
-	<artwork>
-                                                   +-------+
-                          +-------+                | PCRF  |
-                          |  HSS  |               /+-------+\
-                          +-------+            Gx/           \Rx
-                              |                 /             \
-                              |                /               \
-                              |          +-------+    SGi  +-------+
-                              |          |  P-GW |=========|   AF  |
-                              |          +-------+         +-------+
-HPMN                          |              |
-------------------------------|--------------|----------------------
-VPLMN                         |              |
-                          +-------+          |
-                          |  MME  |          |
-                         /+-------+\         |S8
-                 S1-MME /           \        | 
-                       /             \S11    |
-                      /               \      |
-              +-----------+            \     |
-+----+ LTE-Uu |           |             \    |
-| UE |========|           |    S1-U      +-------+
-+----+        |  E-UTRAN  |==============| S-GW  |
-              |   (eNBs)  |              +-------+
-              |           |
-              +-----------+
-	</artwork>
-	</figure>
-
-<!-- Carlos: is it "IP Svr" or "IP Srv" in the figure above? -->
-
-    </section>
-
 
 
     <section title="CONEX Use Cases in the Mobile Communication Scenario" anchor="sec.use-cases">
@@ -1537,6 +1427,120 @@ Do we refer here just to, for example, UTRAN and E-UTRAN co-existance or also to
 </section>
 
 
+    <section title="Overview of 3GPP's Evolved Packet System (EPS)">
+
+      <t>
+	This section provides an overview of 3GPP's "Evolved Packet
+	System" (EPS <xref target="3GPP.36.300"/>, <xref
+	target="3GPP.23.401"/>) as a specific example of a mobile
+	communication architecture. Of course other architectures
+	exist but the EPS is used as one example to demonstrate the
+	applicability of congestion exposure concepts and mechanisms.
+      </t>
+
+      <t>
+	The EPS architecture and some of its standardized interfaces
+	are depicted in Figure 1. The EPS provides IP connectivity to
+	user equipment (UE) (i.e., mobile nodes) and access to
+	operator services, such as global Internet access and voice
+	communications. The EPS comprises the radio access network
+	called evolved UMTS Terrestrial Radio Access Network (E-UTRAN)
+	and the core network called Evolved Packet Core (EPC). QoS is
+	supported through an EPS bearer concept, providing <!--
+	hierarchical --> bindings to resource reservation within the
+	network.
+      </t>
+      
+      <t>
+	The evolved NodeB (eNB), the Long Term Evolution (LTE) base
+	station, is part of the access network that provides radio
+	resource management, header compression, security and
+	connectivity to the core network through the S1 interface. In
+	an LTE network, the control plane signaling traffic and the
+	data traffic are handled separately. The eNBs transmit the
+	control traffic and data traffic separately via two logically
+	separate interfaces.
+      </t>
+      
+      <t>
+	The Home Subscriber Server, HSS, is a database that contains
+	user subscriptions and QoS profiles. The Mobility Management
+	Entity, MME, is responsible for mobility management, user
+	authentication, bearer establishment and modification and
+	maintenance of the UE context.
+      </t>
+      <t>
+	The Serving gateway, S-GW, is the mobility anchor and
+	manages the user plane data tunnels during the inter-eNB
+	handovers. It tunnels all user data packets and buffers downlink IP 
+	packets destined for UEs that happen to be in idle mode.
+      </t>
+      <t>
+	The Packet Data Network (PDN) Gateway, P-GW, is responsible
+	for IP address allocation to the UE and is a tunnel endpoint
+	for user and control plane protocols. It is also responsible
+	for charging, packet filtering, and policy-based control of
+	flows. It interconnects the mobile network to external IP
+	networks, e.g. the Internet.
+      </t>
+      <t>
+	In this architecture, data packets are not sent directly on an
+	IP network between the eNB and the gateways. Instead, every
+	packet is tunneled over a tunneling protocol - the GPRS
+	Tunneling Protocol (GTP <xref target="3GPP.29.060"/>) over
+	UDP/IP. A GTP path is identified in each node with the IP
+	address and a UDP port number on the eNB/gateways. The GTP
+	protocol carries both the data traffic (GTP-U tunnels) and the
+	control traffic (GTP-C tunnels <xref
+	target="3GPP.29.274"/>). Alternatively Proxy Mobile IP
+	(PMIPv6) is used on the S5 interface between S-GW and P-GW.
+      </t>
+      <t>
+	The above is very different from an end-to-end path on the
+	Internet where the packet forwarding is performed at the IP
+	level. Importantly, we observe that these tunneling protocols
+	give the operator a large degree of flexibility to control the
+	congestion mechanism incorporated with the GTP/PMIPv6 protocols.
+      </t>
+  
+	<figure anchor="fig1" title="EPS architecture overview (Roaming Case)" >
+	<artwork>
+                                                   +-------+
+                          +-------+                | PCRF  |
+                          |  HSS  |               /+-------+\
+                          +-------+            Gx/           \Rx
+                              |                 /             \
+                              |                /               \
+                              |          +-------+    SGi  +-------+
+                              |          |  P-GW |=========|   AF  |
+                              |          +-------+         +-------+
+HPMN                          |              |
+------------------------------|--------------|----------------------
+VPLMN                         |              |
+                          +-------+          |
+                          |  MME  |          |
+                         /+-------+\         |S8
+                 S1-MME /           \        | 
+                       /             \S11    |
+                      /               \      |
+              +-----------+            \     |
++----+ LTE-Uu |           |             \    |
+| UE |========|           |    S1-U      +-------+
++----+        |  E-UTRAN  |==============| S-GW  |
+              |   (eNBs)  |              +-------+
+              |           |
+              +-----------+
+	</artwork>
+	</figure>
+
+<!-- Carlos: is it "IP Svr" or "IP Srv" in the figure above? -->
+
+    </section>
+
+
+
+
+
     <section title="ChangeLog">
       <section title="draft-ietf-conex-mobile-03">
 	<t>
@@ -1555,6 +1559,8 @@ Do we refer here just to, for example, UTRAN and E-UTRAN co-existance or also to
 	    <t>merged section 3.4 (CONEX as a Form of Differential
 	    QoS) into 3.1 (CONEX as a Basis for Traffic
 	    Management)</t>
+
+	    <t>moved section 2 (Overview of 3GPP's Evolved Packet System (EPS)) to appendix.</t>
 	  </list>
 	</t>
       </section>

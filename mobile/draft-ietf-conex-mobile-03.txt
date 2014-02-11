@@ -71,26 +71,26 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
 Table of Contents
 
    1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  3
-   2.  Overview of 3GPP's Evolved Packet System (EPS) . . . . . . . .  3
-   3.  CONEX Use Cases in the Mobile Communication Scenario . . . . .  5
-     3.1.  CONEX as a Basis for Traffic Management  . . . . . . . . .  6
-     3.2.  CONEX to Incentivize Scavenger Transports  . . . . . . . .  8
-     3.3.  Accounting for Congestion Volume . . . . . . . . . . . . .  8
-     3.4.  Partial vs. Full Deployment  . . . . . . . . . . . . . . .  9
-     3.5.  Summary  . . . . . . . . . . . . . . . . . . . . . . . . . 10
-   4.  CONEX in the EPS . . . . . . . . . . . . . . . . . . . . . . . 11
-     4.1.  Possible Deployment Scenarios  . . . . . . . . . . . . . . 11
-     4.2.  Implementing CONEX Functions in the EPS  . . . . . . . . . 14
-       4.2.1.  CONEX Protocol Mechanisms  . . . . . . . . . . . . . . 15
-       4.2.2.  CONEX Functions in the Mobile Network  . . . . . . . . 15
-   5.  Summary  . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
-   6.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 19
-   7.  Security Considerations  . . . . . . . . . . . . . . . . . . . 19
-   8.  Informative References . . . . . . . . . . . . . . . . . . . . 19
-   Appendix A.  Acknowledgments . . . . . . . . . . . . . . . . . . . 21
-   Appendix B.  ChangeLog . . . . . . . . . . . . . . . . . . . . . . 21
-     B.1.  draft-ietf-conex-mobile-03 . . . . . . . . . . . . . . . . 21
-     B.2.  Earlier  . . . . . . . . . . . . . . . . . . . . . . . . . 22
+   2.  CONEX Use Cases in the Mobile Communication Scenario . . . . .  3
+     2.1.  CONEX as a Basis for Traffic Management  . . . . . . . . .  4
+     2.2.  CONEX to Incentivize Scavenger Transports  . . . . . . . .  6
+     2.3.  Accounting for Congestion Volume . . . . . . . . . . . . .  7
+     2.4.  Partial vs. Full Deployment  . . . . . . . . . . . . . . .  7
+     2.5.  Summary  . . . . . . . . . . . . . . . . . . . . . . . . .  8
+   3.  CONEX in the EPS . . . . . . . . . . . . . . . . . . . . . . .  9
+     3.1.  Possible Deployment Scenarios  . . . . . . . . . . . . . .  9
+     3.2.  Implementing CONEX Functions in the EPS  . . . . . . . . . 12
+       3.2.1.  CONEX Protocol Mechanisms  . . . . . . . . . . . . . . 13
+       3.2.2.  CONEX Functions in the Mobile Network  . . . . . . . . 13
+   4.  Summary  . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+   5.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 17
+   6.  Security Considerations  . . . . . . . . . . . . . . . . . . . 17
+   7.  Informative References . . . . . . . . . . . . . . . . . . . . 17
+   Appendix A.  Acknowledgments . . . . . . . . . . . . . . . . . . . 19
+   Appendix B.  Overview of 3GPP's Evolved Packet System (EPS)  . . . 19
+   Appendix C.  ChangeLog . . . . . . . . . . . . . . . . . . . . . . 21
+     C.1.  draft-ietf-conex-mobile-03 . . . . . . . . . . . . . . . . 21
+     C.2.  Earlier  . . . . . . . . . . . . . . . . . . . . . . . . . 22
    Authors' Addresses . . . . . . . . . . . . . . . . . . . . . . . . 22
 
 
@@ -157,10 +157,10 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
    described.
 
 
-2.  Overview of 3GPP's Evolved Packet System (EPS)
+2.  CONEX Use Cases in the Mobile Communication Scenario
 
-   This section provides an overview of 3GPP's "Evolved Packet System"
-   (EPS [3GPP.36.300], [3GPP.23.401]) as a specific example of a mobile
+   In general, quality of service and good network resource utilization
+   are important requirements for mobile communication network
 
 
 
@@ -169,99 +169,6 @@ Kutscher, et al.         Expires August 15, 2014                [Page 3]
 Internet-Draft            ConEx Mobile Scenario            February 2014
 
 
-   communication architecture.  Of course other architectures exist but
-   the EPS is used as one example to demonstrate the applicability of
-   congestion exposure concepts and mechanisms.
-
-   The EPS architecture and some of its standardized interfaces are
-   depicted in Figure 1.  The EPS provides IP connectivity to user
-   equipment (UE) (i.e., mobile nodes) and access to operator services,
-   such as global Internet access and voice communications.  The EPS
-   comprises the radio access network called evolved UMTS Terrestrial
-   Radio Access Network (E-UTRAN) and the core network called Evolved
-   Packet Core (EPC).  QoS is supported through an EPS bearer concept,
-   providing bindings to resource reservation within the network.
-
-   The evolved NodeB (eNB), the Long Term Evolution (LTE) base station,
-   is part of the access network that provides radio resource
-   management, header compression, security and connectivity to the core
-   network through the S1 interface.  In an LTE network, the control
-   plane signaling traffic and the data traffic are handled separately.
-   The eNBs transmit the control traffic and data traffic separately via
-   two logically separate interfaces.
-
-   The Home Subscriber Server, HSS, is a database that contains user
-   subscriptions and QoS profiles.  The Mobility Management Entity, MME,
-   is responsible for mobility management, user authentication, bearer
-   establishment and modification and maintenance of the UE context.
-
-   The Serving gateway, S-GW, is the mobility anchor and manages the
-   user plane data tunnels during the inter-eNB handovers.  It tunnels
-   all user data packets and buffers downlink IP packets destined for
-   UEs that happen to be in idle mode.
-
-   The Packet Data Network (PDN) Gateway, P-GW, is responsible for IP
-   address allocation to the UE and is a tunnel endpoint for user and
-   control plane protocols.  It is also responsible for charging, packet
-   filtering, and policy-based control of flows.  It interconnects the
-   mobile network to external IP networks, e.g. the Internet.
-
-   In this architecture, data packets are not sent directly on an IP
-   network between the eNB and the gateways.  Instead, every packet is
-   tunneled over a tunneling protocol - the GPRS Tunneling Protocol (GTP
-   [3GPP.29.060]) over UDP/IP.  A GTP path is identified in each node
-   with the IP address and a UDP port number on the eNB/gateways.  The
-   GTP protocol carries both the data traffic (GTP-U tunnels) and the
-   control traffic (GTP-C tunnels [3GPP.29.274]).  Alternatively Proxy
-   Mobile IP (PMIPv6) is used on the S5 interface between S-GW and P-GW.
-
-   The above is very different from an end-to-end path on the Internet
-   where the packet forwarding is performed at the IP level.
-
-
-
-Kutscher, et al.         Expires August 15, 2014                [Page 4]
-
-Internet-Draft            ConEx Mobile Scenario            February 2014
-
-
-   Importantly, we observe that these tunneling protocols give the
-   operator a large degree of flexibility to control the congestion
-   mechanism incorporated with the GTP/PMIPv6 protocols.
-
-                                                      +-------+
-                             +-------+                | PCRF  |
-                             |  HSS  |               /+-------+\
-                             +-------+            Gx/           \Rx
-                                 |                 /             \
-                                 |                /               \
-                                 |          +-------+    SGi  +-------+
-                                 |          |  P-GW |=========|   AF  |
-                                 |          +-------+         +-------+
-   HPMN                          |              |
-   ------------------------------|--------------|----------------------
-   VPLMN                         |              |
-                             +-------+          |
-                             |  MME  |          |
-                            /+-------+\         |S8
-                    S1-MME /           \        |
-                          /             \S11    |
-                         /               \      |
-                 +-----------+            \     |
-   +----+ LTE-Uu |           |             \    |
-   | UE |========|           |    S1-U      +-------+
-   +----+        |  E-UTRAN  |==============| S-GW  |
-                 |   (eNBs)  |              +-------+
-                 |           |
-                 +-----------+
-
-            Figure 1: EPS architecture overview (Roaming Case)
-
-
-3.  CONEX Use Cases in the Mobile Communication Scenario
-
-   In general, quality of service and good network resource utilization
-   are important requirements for mobile communication network
    operators.  Radio access and backhaul networks are considered scarce
    resources, and bandwidth (and radio resource) demand is difficult to
    predict precisely due to user mobility, radio propagation effects
@@ -273,14 +180,6 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
    granular service differentiation).
 
    In the following, we discuss ways how congestion exposure could be
-
-
-
-Kutscher, et al.         Expires August 15, 2014                [Page 5]
-
-Internet-Draft            ConEx Mobile Scenario            February 2014
-
-
    beneficial for supporting resource management in such mobile
    communication networks.  [RFC6789] describes fundamental congestion
    exposure concepts and a set of use cases for applying congestion
@@ -290,7 +189,7 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
    general mobile communication scenario in order to validate the use
    cases for this particular scenario.
 
-3.1.  CONEX as a Basis for Traffic Management
+2.1.  CONEX as a Basis for Traffic Management
 
    Traffic management is a very important function in mobile
    communication networks.  Since wireless resources are considered
@@ -318,6 +217,14 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
    In the light of the significant increase of overall data volume in 3G
    networks, Deep-Packet-Inspection (DPI) is often considered a
    desirable function to have in the EPC -- on, for example, a PDN
+
+
+
+Kutscher, et al.         Expires August 15, 2014                [Page 4]
+
+Internet-Draft            ConEx Mobile Scenario            February 2014
+
+
    (Packet Data Network) gateway, and some operators do in fact deploy
    DPI today. 3GPP has a current work item on "Service Awareness and
    Privacy Policies" that is chartered to add DPI-related extensions to
@@ -328,14 +235,6 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
    Policy Control and Charging Rules Function (PCRF) for performing
    functions such as traffic blocking, redirection or policing for
    selected flows.
-
-
-
-
-Kutscher, et al.         Expires August 15, 2014                [Page 6]
-
-Internet-Draft            ConEx Mobile Scenario            February 2014
-
 
    Congestion exposure can be employed to address these requirements for
    tight resource management in different ways:
@@ -374,6 +273,14 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
        1.  as additional information to assist network functions to
            impose different QoS for different application sessions; and
 
+
+
+
+Kutscher, et al.         Expires August 15, 2014                [Page 5]
+
+Internet-Draft            ConEx Mobile Scenario            February 2014
+
+
        2.  as a tool to let applications decide on their response to
            congestion notification, while incentivizing them to react
            (in general) appropriately, e.g., by enforcing overall limits
@@ -385,14 +292,6 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
        that users are equipped with dual mode mobile phones (e.g.,
        integrating third/fourth generation cellular and WiFi radio
        devices) capable of attaching to available networks either
-
-
-
-Kutscher, et al.         Expires August 15, 2014                [Page 7]
-
-Internet-Draft            ConEx Mobile Scenario            February 2014
-
-
        sequentially or simultaneously.  With this scenario in mind, 3GPP
        is currently looking at mechanisms to seamlessly and selectively
        switch over a single IP flow (e.g., user application) to a
@@ -412,7 +311,7 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
    might require changes to the PCC architecture, depending on the scope
    and impact of a CONEX-based traffic management approach.
 
-3.2.  CONEX to Incentivize Scavenger Transports
+2.2.  CONEX to Incentivize Scavenger Transports
 
    As 3G and LTE networks are turning into universal access networks
    that are shared between mobile (smart) phone users, mobile users with
@@ -430,25 +329,25 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
    network.  The use of these transports by the end user however needs
    to be incentivized.  CONEX could be used to build an incentive scheme
    e.g. by allowing users that contribute less to congestion to give
+
+
+
+Kutscher, et al.         Expires August 15, 2014                [Page 6]
+
+Internet-Draft            ConEx Mobile Scenario            February 2014
+
+
    them a larger bandwidth allowance or e.g. to lower the next monthly
    subscription fee.  In principle, this would be possible to implement
    with current specifications.
 
-3.3.  Accounting for Congestion Volume
+2.3.  Accounting for Congestion Volume
 
    3G and LTE networks provide extensive support for accounting and
    charging already, for example cf. the Policy Charging Control (PCC)
    architecture.  In fact, most operators today account transmitted data
    volume on a very fine granular basis and either correlate monthly
    charging to the exact number of packets/bytes transmitted, or employ
-
-
-
-Kutscher, et al.         Expires August 15, 2014                [Page 8]
-
-Internet-Draft            ConEx Mobile Scenario            February 2014
-
-
    some form of flat rate (or flexible flat rate), often with a so-
    called fair-use policy.  With such policies, users are typically
    limited to an administratively configured maximum bandwidth limit,
@@ -474,7 +373,7 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
    Control" capability that is currently based on data volume.  This
    would not require any new interface (reference points) at all.
 
-3.4.  Partial vs. Full Deployment
+2.4.  Partial vs. Full Deployment
 
    In general, CONEX lends itself to partial deployment as the mechanism
    does not require all routers and hosts to support congestion
@@ -486,6 +385,14 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
 
    [I-D.briscoe-conex-initial-deploy] provides specific examples of how
    CONEX deployment can be initiated, focusing unilaterial deployment by
+
+
+
+Kutscher, et al.         Expires August 15, 2014                [Page 7]
+
+Internet-Draft            ConEx Mobile Scenario            February 2014
+
+
    single networks, i.e., by partial deployment.
 
    In mobile communication networks that would for example allow early
@@ -497,14 +404,6 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
    different ways for introducing CONEX support on UEs are feasible.
    Since mobile communication networks are multi-vendor networks,
    standardizing CONEX support on UEs (e.g., in 3GPP specifications)
-
-
-
-Kutscher, et al.         Expires August 15, 2014                [Page 9]
-
-Internet-Draft            ConEx Mobile Scenario            February 2014
-
-
    appears useful.  Still, not all UEs would have to support CONEX, and
    operators would be free to choose their policing approach in such
    deployment scenarios.  Leveraging existing PCC architectures, 3GPP
@@ -535,13 +434,21 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
    actually offload by considering congestion exposure in bulk traffic
    aggregates -- thus making traffic offload more effective.
 
-3.5.  Summary
+2.5.  Summary
 
    In summary, the 3GPP EPS is a system architecture that can benefit
    from congestion exposure in multiple ways, as we have shown by this
    brief description of CONEX use cases in this environment.  Dynamic
    traffic and congestion management is an acknowledged and important
    requirement for the EPS, also illustrated by the current DPI-related
+
+
+
+Kutscher, et al.         Expires August 15, 2014                [Page 8]
+
+Internet-Draft            ConEx Mobile Scenario            February 2014
+
+
    work for EPS.
 
    Moreover, networks such as an EPS mobile communication network would
@@ -553,21 +460,13 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
    enable operator-local enhancement without the need for major changes
    to the architecture.
 
-
-
-
-Kutscher, et al.         Expires August 15, 2014               [Page 10]
-
-Internet-Draft            ConEx Mobile Scenario            February 2014
-
-
    In 3GPP EPS, interfaces between all elements of the architecture are
    subject to standardization, including UE interfaces and eNodeB
    interfaces, so that a more general approach, involving more than one
    single operator's network, can be feasible as well.
 
 
-4.  CONEX in the EPS
+3.  CONEX in the EPS
 
    At the time of writing, the CONEX mechanism is still work in progress
    in the IETF working group.  Still, discussing a few options for how
@@ -577,7 +476,7 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
    possible approaches -- it is merely intended for discussing the most
    promising options.
 
-4.1.  Possible Deployment Scenarios
+3.1.  Possible Deployment Scenarios
 
    There are different possible ways how CONEX functions on hosts and
    network elements can be used.  For example, CONEX could be used for a
@@ -589,7 +488,7 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
    We present three different deployment scenarios for congestion
    exposure in the figures below:
 
-   1.  In Figure 2 CONEX is supported by servers for sending data (here:
+   1.  In Figure 1 CONEX is supported by servers for sending data (here:
        web servers in the Internet and caches in an operator's network)
        but not by UEs (neither for receiving nor sending).  An operator
        who chooses to run a policing function on the network ingress
@@ -597,26 +496,26 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
        without requiring any change on UEs.
 
    2.  CONEX is universally employed between operators (as depicted in
-       Figure 3), with an end-to-end CONEX feedback loop.  Here,
+       Figure 2), with an end-to-end CONEX feedback loop.  Here,
+
+
+
+Kutscher, et al.         Expires August 15, 2014                [Page 9]
+
+Internet-Draft            ConEx Mobile Scenario            February 2014
+
+
        operators could still employ local policies, congestion
        accounting schemes etc., and they could use information about
        congestion contribution for determining interconnection
        agreements.  This deployment scenario would imply the willingness
        of operators to expose congestion to each other.
 
-   3.  Isolated CONEX domains as depicted in Figure 4, where CONEX is
+   3.  Isolated CONEX domains as depicted in Figure 3, where CONEX is
        solely applied locally, in the operator network, and there is no
        end-to-end congestion exposure.  This could be the case when
        CONEX is only implemented in a few networks, or when operators
        decide to not expose ECN and account for congestion for inter-
-
-
-
-Kutscher, et al.         Expires August 15, 2014               [Page 11]
-
-Internet-Draft            ConEx Mobile Scenario            February 2014
-
-
        domain traffic.  Independent of the actual scenario, it is likely
        that there will be border gateways (as in today's deployments)
        that are associated with policing and accounting functions.
@@ -649,7 +548,7 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
    |              Operator A                           |
    -----------------------------------------------------
 
-               Figure 2: CONEX support on servers and caches
+               Figure 1: CONEX support on servers and caches
 
 
 
@@ -657,18 +556,7 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-Kutscher, et al.         Expires August 15, 2014               [Page 12]
+Kutscher, et al.         Expires August 15, 2014               [Page 10]
 
 Internet-Draft            ConEx Mobile Scenario            February 2014
 
@@ -695,7 +583,7 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
    |              Operator B                           |
    -----------------------------------------------------
 
-            Figure 3: CONEX deployment across operator domains
+            Figure 2: CONEX deployment across operator domains
 
 
 
@@ -724,7 +612,7 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
 
 
 
-Kutscher, et al.         Expires August 15, 2014               [Page 13]
+Kutscher, et al.         Expires August 15, 2014               [Page 11]
 
 Internet-Draft            ConEx Mobile Scenario            February 2014
 
@@ -753,14 +641,14 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
    |              Operator B                           |
    -----------------------------------------------------
 
-          Figure 4: CONEX deployment in a single operator domain
+          Figure 3: CONEX deployment in a single operator domain
 
    We consider all three scenarios to be relevant and believe that all
    of them are within the scope of the CONEX WG charter.  A more
    detailed description will be provided in a future version of this
    document.
 
-4.2.  Implementing CONEX Functions in the EPS
+3.2.  Implementing CONEX Functions in the EPS
 
    We expect a CONEX solution to consist of different functions that
    should be considered when implementing congestion exposure in 3GPP's
@@ -780,7 +668,7 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
 
 
 
-Kutscher, et al.         Expires August 15, 2014               [Page 14]
+Kutscher, et al.         Expires August 15, 2014               [Page 12]
 
 Internet-Draft            ConEx Mobile Scenario            February 2014
 
@@ -794,7 +682,7 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
    would be placed best (to allow for a non-invasive addition).  We
    discuss these two aspects in the following sections.
 
-4.2.1.  CONEX Protocol Mechanisms
+3.2.1.  CONEX Protocol Mechanisms
 
    As described in [I-D.briscoe-conex-initial-deploy], the most
    important step in introducing CONEX (initially) is adding the
@@ -829,14 +717,14 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
    [I-D.briscoe-tsvwg-ecn-encap-guidelines].  Specifically, a
    specification for tunneling ECN in GTP-U will be needed.
 
-4.2.2.  CONEX Functions in the Mobile Network
+3.2.2.  CONEX Functions in the Mobile Network
 
    In the following, we discuss some possible placement strategies for
    CONEX functional entities (addressing both policing and auditing
 
 
 
-Kutscher, et al.         Expires August 15, 2014               [Page 15]
+Kutscher, et al.         Expires August 15, 2014               [Page 13]
 
 Internet-Draft            ConEx Mobile Scenario            February 2014
 
@@ -873,10 +761,10 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
    links, gateways etc. that could be overloaded as well.
 
    For managing downlink traffic -- e.g., in scenarios such as the one
-   depicted in Figure 2, operators can have different requirements for
+   depicted in Figure 1, operators can have different requirements for
    policing traffic.  Although policing is in principle location-
    agnostic, it is important to consider requirements related to the EPS
-   architecture (Figure 1) such as tunneling between P-GWs and eNBs.
+   architecture (Figure 4) such as tunneling between P-GWs and eNBs.
    Policing can require access to subscriber information (e.g.,
    congestion contribution quota) or user-specific accounting, which
    suggests that the CONEX function could be co-located with the P-GW
@@ -892,7 +780,7 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
 
 
 
-Kutscher, et al.         Expires August 15, 2014               [Page 16]
+Kutscher, et al.         Expires August 15, 2014               [Page 14]
 
 Internet-Draft            ConEx Mobile Scenario            February 2014
 
@@ -909,7 +797,7 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
    concentration points in the core network.
 
    Such a setup would enable all the CONEX use cases described in
-   Section 3, without requiring significant changes to the EPS
+   Section 2, without requiring significant changes to the EPS
    architecture, while enabling operators to re-use existing
    infrastructure, specifically wireless base stations, PCRF and HSS
    systems.
@@ -934,7 +822,7 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
    document.
 
 
-5.  Summary
+4.  Summary
 
    We have shown how congestion exposure can be useful for efficient
    resource management in mobile communication networks.  The premise
@@ -948,13 +836,13 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
 
 
 
-Kutscher, et al.         Expires August 15, 2014               [Page 17]
+Kutscher, et al.         Expires August 15, 2014               [Page 15]
 
 Internet-Draft            ConEx Mobile Scenario            February 2014
 
 
    allowing operators to apply these mechanisms in different ways, e.g.,
-   for implementing different use cases as described in Section 3.  It
+   for implementing different use cases as described in Section 2.  It
    is important to note that CONEX is fundamentally a mechanism that can
    be applied in different ways -- to realize different operators
    policies.
@@ -1004,7 +892,7 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
 
 
 
-Kutscher, et al.         Expires August 15, 2014               [Page 18]
+Kutscher, et al.         Expires August 15, 2014               [Page 16]
 
 Internet-Draft            ConEx Mobile Scenario            February 2014
 
@@ -1029,19 +917,19 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
    only static information.
 
 
-6.  IANA Considerations
+5.  IANA Considerations
 
    No IANA considerations.
 
 
-7.  Security Considerations
+6.  Security Considerations
 
    Security considerations for applying CONEX to EPS include, but are
    not limited to, the security considerations that apply to the CONEX
    protocols.
 
 
-8.  Informative References
+7.  Informative References
 
    [3GPP.23.203]
               3GPP, "Policy and charging control architecture", 3GPP
@@ -1060,7 +948,7 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
 
 
 
-Kutscher, et al.         Expires August 15, 2014               [Page 19]
+Kutscher, et al.         Expires August 15, 2014               [Page 17]
 
 Internet-Draft            ConEx Mobile Scenario            February 2014
 
@@ -1116,7 +1004,7 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
 
 
 
-Kutscher, et al.         Expires August 15, 2014               [Page 20]
+Kutscher, et al.         Expires August 15, 2014               [Page 18]
 
 Internet-Draft            ConEx Mobile Scenario            February 2014
 
@@ -1159,23 +1047,117 @@ Appendix A.  Acknowledgments
    helpful comments.
 
 
-Appendix B.  ChangeLog
+Appendix B.  Overview of 3GPP's Evolved Packet System (EPS)
 
-B.1.  draft-ietf-conex-mobile-03
+   This section provides an overview of 3GPP's "Evolved Packet System"
+   (EPS [3GPP.36.300], [3GPP.23.401]) as a specific example of a mobile
+   communication architecture.  Of course other architectures exist but
+   the EPS is used as one example to demonstrate the applicability of
+   congestion exposure concepts and mechanisms.
+
+   The EPS architecture and some of its standardized interfaces are
+   depicted in Figure 1.  The EPS provides IP connectivity to user
+
+
+
+Kutscher, et al.         Expires August 15, 2014               [Page 19]
+
+Internet-Draft            ConEx Mobile Scenario            February 2014
+
+
+   equipment (UE) (i.e., mobile nodes) and access to operator services,
+   such as global Internet access and voice communications.  The EPS
+   comprises the radio access network called evolved UMTS Terrestrial
+   Radio Access Network (E-UTRAN) and the core network called Evolved
+   Packet Core (EPC).  QoS is supported through an EPS bearer concept,
+   providing bindings to resource reservation within the network.
+
+   The evolved NodeB (eNB), the Long Term Evolution (LTE) base station,
+   is part of the access network that provides radio resource
+   management, header compression, security and connectivity to the core
+   network through the S1 interface.  In an LTE network, the control
+   plane signaling traffic and the data traffic are handled separately.
+   The eNBs transmit the control traffic and data traffic separately via
+   two logically separate interfaces.
+
+   The Home Subscriber Server, HSS, is a database that contains user
+   subscriptions and QoS profiles.  The Mobility Management Entity, MME,
+   is responsible for mobility management, user authentication, bearer
+   establishment and modification and maintenance of the UE context.
+
+   The Serving gateway, S-GW, is the mobility anchor and manages the
+   user plane data tunnels during the inter-eNB handovers.  It tunnels
+   all user data packets and buffers downlink IP packets destined for
+   UEs that happen to be in idle mode.
+
+   The Packet Data Network (PDN) Gateway, P-GW, is responsible for IP
+   address allocation to the UE and is a tunnel endpoint for user and
+   control plane protocols.  It is also responsible for charging, packet
+   filtering, and policy-based control of flows.  It interconnects the
+   mobile network to external IP networks, e.g. the Internet.
+
+   In this architecture, data packets are not sent directly on an IP
+   network between the eNB and the gateways.  Instead, every packet is
+   tunneled over a tunneling protocol - the GPRS Tunneling Protocol (GTP
+   [3GPP.29.060]) over UDP/IP.  A GTP path is identified in each node
+   with the IP address and a UDP port number on the eNB/gateways.  The
+   GTP protocol carries both the data traffic (GTP-U tunnels) and the
+   control traffic (GTP-C tunnels [3GPP.29.274]).  Alternatively Proxy
+   Mobile IP (PMIPv6) is used on the S5 interface between S-GW and P-GW.
+
+   The above is very different from an end-to-end path on the Internet
+   where the packet forwarding is performed at the IP level.
+   Importantly, we observe that these tunneling protocols give the
+   operator a large degree of flexibility to control the congestion
+   mechanism incorporated with the GTP/PMIPv6 protocols.
+
+
+
+
+
+
+Kutscher, et al.         Expires August 15, 2014               [Page 20]
+
+Internet-Draft            ConEx Mobile Scenario            February 2014
+
+
+                                                      +-------+
+                             +-------+                | PCRF  |
+                             |  HSS  |               /+-------+\
+                             +-------+            Gx/           \Rx
+                                 |                 /             \
+                                 |                /               \
+                                 |          +-------+    SGi  +-------+
+                                 |          |  P-GW |=========|   AF  |
+                                 |          +-------+         +-------+
+   HPMN                          |              |
+   ------------------------------|--------------|----------------------
+   VPLMN                         |              |
+                             +-------+          |
+                             |  MME  |          |
+                            /+-------+\         |S8
+                    S1-MME /           \        |
+                          /             \S11    |
+                         /               \      |
+                 +-----------+            \     |
+   +----+ LTE-Uu |           |             \    |
+   | UE |========|           |    S1-U      +-------+
+   +----+        |  E-UTRAN  |==============| S-GW  |
+                 |   (eNBs)  |              +-------+
+                 |           |
+                 +-----------+
+
+            Figure 4: EPS architecture overview (Roaming Case)
+
+
+Appendix C.  ChangeLog
+
+C.1.  draft-ietf-conex-mobile-03
 
    o  implemented suggestions for improving 3GPP EPS descriptions by
       Andreas Maeder
 
    o  mentioned 3GPP UPCON and added reference
-
-
-
-
-
-Kutscher, et al.         Expires August 15, 2014               [Page 21]
-
-Internet-Draft            ConEx Mobile Scenario            February 2014
-
 
    o  updated references
 
@@ -1188,7 +1170,17 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
    o  merged section 3.4 (CONEX as a Form of Differential QoS) into 3.1
       (CONEX as a Basis for Traffic Management)
 
-B.2.  Earlier
+
+
+Kutscher, et al.         Expires August 15, 2014               [Page 21]
+
+Internet-Draft            ConEx Mobile Scenario            February 2014
+
+
+   o  moved section 2 (Overview of 3GPP's Evolved Packet System (EPS))
+      to appendix.
+
+C.2.  Earlier
 
    o  changed title to "Mobile Communication Congestion Exposure
       Scenario" (was "use case")
@@ -1224,15 +1216,6 @@ Authors' Addresses
    Email: kutscher@neclab.eu
 
 
-
-
-
-
-Kutscher, et al.         Expires August 15, 2014               [Page 22]
-
-Internet-Draft            ConEx Mobile Scenario            February 2014
-
-
    Faisal Ghias Mir
    NEC
    Kurfuersten-Anlage 36
@@ -1241,6 +1224,13 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
 
    Phone:
    Email: faisal.mir@neclab.eu
+
+
+
+
+Kutscher, et al.         Expires August 15, 2014               [Page 22]
+
+Internet-Draft            ConEx Mobile Scenario            February 2014
 
 
    Rolf Winter
@@ -1273,22 +1263,6 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
    Email: ying.zhang@ericsson.com
 
 
-
-
-
-
-
-
-
-
-
-
-
-Kutscher, et al.         Expires August 15, 2014               [Page 23]
-
-Internet-Draft            ConEx Mobile Scenario            February 2014
-
-
    Carlos J. Bernardos
    Universidad Carlos III de Madrid
    Av. Universidad, 30
@@ -1310,35 +1284,5 @@ Internet-Draft            ConEx Mobile Scenario            February 2014
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Kutscher, et al.         Expires August 15, 2014               [Page 24]
+Kutscher, et al.         Expires August 15, 2014               [Page 23]
 
