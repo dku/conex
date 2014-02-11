@@ -2,3 +2,10 @@ version -03
 
 - briscoe-conex-initial-deploy still alive?
 
+- The decision on when and which IP flows move is typically based on
+  static configured rules, whereas the use of CONEX mechanisms could
+  also factor in real-time congestion information in the decision.
+
+  - how static is this really? (ANDSF?)
+
+

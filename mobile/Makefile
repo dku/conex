@@ -9,7 +9,7 @@ DRAFTTXT=$(DOCUMENT).txt
 
 
 .PHONY: all
-all: $(DOCUMENT).txt $(DOCUMENT).pdf
+all: $(DOCUMENT).txt # $(DOCUMENT).pdf
 
 #	tclsh $(XML2RFC) xml2rfc draft-conex-mobile.xml $(DRAFTTXT)
 

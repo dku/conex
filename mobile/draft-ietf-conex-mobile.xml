@@ -17,17 +17,15 @@
 
 <!ENTITY I-D.narten-iana-considerations-rfc2434bis SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.narten-iana-considerations-rfc2434bis.xml">
 
-<!--
-<!ENTITY I-D.draft-ietf-conex-concepts-uses SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-ietf-conex-concepts-uses-04.xml">
--->
 
-<!ENTITY I-D.draft-ietf-conex-abstract-mech SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-ietf-conex-abstract-mech-06.xml">
+<!ENTITY I-D.draft-ietf-conex-abstract-mech SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-ietf-conex-abstract-mech-08.xml">
 
-<!ENTITY I-D.draft-ietf-conex-destopt SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-ietf-conex-destopt-03.xml">
+<!ENTITY I-D.draft-ietf-conex-destopt SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-ietf-conex-destopt-05.xml">
 
-<!ENTITY I-D.draft-brisoe-initial-deploy SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-briscoe-conex-initial-deploy-02.xml">
 
-<!ENTITY I-D.draft-briscoe-tsvwg-ecn-encap-guidelines SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-briscoe-tsvwg-ecn-encap-guidelines-01.xml">
+<!ENTITY I-D.draft-briscoe-tsvwg-ecn-encap-guidelines SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-briscoe-tsvwg-ecn-encap-guidelines-03.xml">
+
+<!ENTITY I-D.draft-briscoe-conex-initial-deploy SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-briscoe-conex-initial-deploy-03.xml">
 
 
 
@@ -273,21 +271,21 @@
 	specific areas where such new technologies could be deemed
 	useful are resource allocation and flow management. </t>
 	
-	<t>Analysis
-	of cellular network data traffic has shown that most flows are
-	short-lived and low-volume, but a comparitively small number of
-	high-volume flows
-	constitute a large fraction of the overall traffic
-	volume. Measurements have also shown that a small fraction of
-	users is responsible for the majority of traffic in cellular
-	networks. In view of such highly skewed user behavior and
-	limited and expensive resources (e.g. the wireless spectrum), resource
-	allocation and usage accountability are two important issues
-	for operators to solve in order to achieve a better 
-	network resource utilization and fair resource sharing.
-	CONEX, as described in <xref
-	target="RFC6789"></xref>, is a technology
-	that can be used to achieve these goals.
+	<t>
+	  Analysis of cellular network data traffic has shown that
+	  most flows are short-lived and low-volume, but a
+	  comparatively small number of high-volume flows constitute a
+	  large fraction of the overall traffic volume. Measurements
+	  have also shown that a small fraction of users is
+	  responsible for the majority of traffic in cellular
+	  networks. In view of such highly skewed user behavior and
+	  limited and expensive resources (e.g. the wireless
+	  spectrum), resource allocation and usage accountability are
+	  two important issues for operators to solve in order to
+	  achieve a better network resource utilization and fair
+	  resource sharing.  CONEX, as described in <xref
+	  target="RFC6789"></xref>, is a technology that can be used
+	  to achieve these goals.
         </t>
   
   <t>
@@ -325,23 +323,24 @@
 
       <t>
 	This section provides an overview of 3GPP's "Evolved Packet
-	System" (EPS <xref target="3GPP.36.300"/>) as a specific
-	example of a mobile communication architecture. Of course
-	other architectures exist but the EPS is used as one example
-	to demonstrate the applicability of congestion exposure 
-	concepts and mechanisms. 
+	System" (EPS <xref target="3GPP.36.300"/>, <xref
+	target="3GPP.23.401"/>) as a specific example of a mobile
+	communication architecture. Of course other architectures
+	exist but the EPS is used as one example to demonstrate the
+	applicability of congestion exposure concepts and mechanisms.
       </t>
 
       <t>
-	The EPS architecture and its standardized interfaces are
-	depicted in Figure 1. The EPS provides IP connectivity to user
-	equipment (UE) (i.e., mobile nodes) and access to operator
-	services, such as global Internet access and voice
+	The EPS architecture and some of its standardized interfaces
+	are depicted in Figure 1. The EPS provides IP connectivity to
+	user equipment (UE) (i.e., mobile nodes) and access to
+	operator services, such as global Internet access and voice
 	communications. The EPS comprises the radio access network
 	called evolved UMTS Terrestrial Radio Access Network (E-UTRAN)
 	and the core network called Evolved Packet Core (EPC). QoS is
-	supported through an EPS bearer concept, providing
-	hierarchical bindings within the network.
+	supported through an EPS bearer concept, providing <!--
+	hierarchical --> bindings to resource reservation within the
+	network.
       </t>
       
       <t>
@@ -358,9 +357,9 @@
       <t>
 	The Home Subscriber Server, HSS, is a database that contains
 	user subscriptions and QoS profiles. The Mobility Management
-	Entity, MME, is responsible for user authentication, bearer
-	establishment and modification and maintenance of the UE
-	context.
+	Entity, MME, is responsible for mobility management, user
+	authentication, bearer establishment and modification and
+	maintenance of the UE context.
       </t>
       <t>
 	The Serving gateway, S-GW, is the mobility anchor and
@@ -371,21 +370,22 @@
       <t>
 	The Packet Data Network (PDN) Gateway, P-GW, is responsible
 	for IP address allocation to the UE and is a tunnel endpoint
-	for mobility protocols. It is also responsible for charging,
-	packet filtering, and policy-based control of flows. It
-	interconnects the mobile network to external IP networks,
-	e.g. the Internet.
+	for user and control plane protocols. It is also responsible
+	for charging, packet filtering, and policy-based control of
+	flows. It interconnects the mobile network to external IP
+	networks, e.g. the Internet.
       </t>
       <t>
 	In this architecture, data packets are not sent directly on an
 	IP network between the eNB and the gateways. Instead, every
-	packet is tunneled over a tunneling protocol - the GPRS Tunneling
-	Protocol (GTP <xref target="3GPP.29.060"/>) over UDP/IP. A GTP
-	path is identified in each node with the IP address and a UDP
-	port number on the eNB/gateways. The GTP protocol carries both
-	the data traffic (GTP-U tunnels) and the control traffic
-	(GTP-C tunnels <xref target="3GPP.29.274"/>). Alternativly
-	Proxy Mobile IP (PMIPv6) is used on the S5 interface.
+	packet is tunneled over a tunneling protocol - the GPRS
+	Tunneling Protocol (GTP <xref target="3GPP.29.060"/>) over
+	UDP/IP. A GTP path is identified in each node with the IP
+	address and a UDP port number on the eNB/gateways. The GTP
+	protocol carries both the data traffic (GTP-U tunnels) and the
+	control traffic (GTP-C tunnels <xref
+	target="3GPP.29.274"/>). Alternatively Proxy Mobile IP
+	(PMIPv6) is used on the S5 interface between S-GW and P-GW.
       </t>
       <t>
 	The above is very different from an end-to-end path on the
@@ -395,7 +395,7 @@
 	congestion mechanism incorporated with the GTP/PMIPv6 protocols.
       </t>
   
-	<figure anchor="fig1" title="EPS architecture overview" >
+	<figure anchor="fig1" title="EPS architecture overview (Roaming Case)" >
 	<artwork>
                                                    +-------+
                           +-------+                | PCRF  |
@@ -441,10 +441,11 @@ VPLMN                         |              |
 	to user mobility, radio propagation effects etc. Hence today's
 	architectures and protocols go to significant extent in order
 	to provide network-controlled quality of service -- for
-	instance by 3GPP's EPS bearer model that enables the network to
-	allocate service data flows (SDFs) to certain EPS bearers with
-	specific quality of service classes (which can be used for
-	fine-granular per-application service differentiation).
+	instance by 3GPP's EPS bearer model that enables the network
+	to allocate service data flows (SDFs) to certain EPS bearers
+	with specific quality of service classes (which can be used
+	for fine-granular <!-- per-application--> service
+	differentiation).
       </t>
       <t>
 	In the following, we discuss ways how congestion exposure
@@ -470,22 +471,23 @@ VPLMN                         |              |
 	  bearer establishment etc.).
 	</t>
 	<t>
-	  In the EPS, the QoS requirements for different applications
+	  In the EPS, the QoS requirements for different services
 	  running on a UE are supported by a bearer concept which is
 	  managed by the network. Each bearer has an associated QoS
 	  Class Identifier (QCI) and an Allocation and Retention
 	  Policy (ARP) that has been standardized for uniform traffic
-	  handling (across implementations). For the necessary QoS
+	  handling (across implementations) -- operators can define
+	  private QCIs in addition to that. For the necessary QoS
 	  across the mobile network, an EPS bearer is maintained that
 	  crosses different interfaces in the network and maps to
 	  lower layer bearers for packet forwarding. A radio bearer
 	  transports traffic between a UE and eNB whereas an S1 bearer
 	  transports traffic between the eNB and S-GW. Primarily LTE
 	  offers two types of bearer: a guaranteed bit rate bearer for
-	  real-time communication, e.g., voice calls and
-	  a non-guaranteed bit rate bearer for best effort traffic for Internet
-	  access etc. Packets mapped to the same EPS bearer receive
-	  the same bearer-level packet forwarding treatment.
+	  real-time communication, e.g., voice calls and a
+	  non-guaranteed bit rate bearer for best effort traffic for
+	  Internet access etc. Packets mapped to the same EPS bearer
+	  receive the same bearer-level packet forwarding treatment.
 	</t>
 	<t>
 	  In the light of the significant increase of overall data
@@ -508,68 +510,85 @@ VPLMN                         |              |
 	  requirements for tight resource management in different ways:
 	  <list style="numbers">
 	    <t>
-	      It can enhance DPI by providing flow policy-based
-	      traffic management. At present, DPI-based resource
-	      management is often used to prioritize certain
-	      application classes with respect to others in overload
-	      situations, so that effectively more users can be served
-	      on the network. In overload situations, operators use
-	      DPI to identify dispensable flows and make them yield to
-	      other flows (of different application classes) through
-	      policing. Such traffic management is thus based on
-	      static configuration and some estimation about the
-	      future per-flow bandwidth demand. With congestion
-	      exposure it would be possible to assess the contribution to congestion of
-	      individual flows. This information can then be used 
-	      as input to a policer that can optimize network utilization more
+	      It can enable or enhance flow policy-based traffic
+	      management. At present, DPI-based resource management is
+	      often used to prioritize certain application classes
+	      with respect to others in overload situations, so that
+	      effectively more users can be served on the network. In
+	      overload situations, operators use DPI to identify
+	      dispensable flows and make them yield to other flows (of
+	      different application classes) through policing. Such
+	      traffic management is thus based on static configuration
+	      and some estimation about the future per-flow bandwidth
+	      demand. With congestion exposure it would be possible to
+	      assess the contribution to congestion of individual
+	      flows. This information can then be used as input to a
+	      policer that can optimize network utilization more
 	      accurately and dynamically.
-	      </t>
-	      <t>
-		It can reduce the need for complex DPI by allowing for a bulk
-		packet traffic management system that does not have to
-		consider the application classes flows belong to and individual
-		sessions. Instead, traffic management would be based on
-		the current cost (contribution to congestion) incurred
-		by different flows and enable operators to apply
-		policing/accounting depending on their
-		preference. Such traffic management would be simpler
-		and more robust (no real-time flow application type
-		identification required, no static configuration of
-		application classes) and perform better as decisions
-		can be taken based on real-time actual cost
-		contribution.
-	      </t>
-	      <t>
-		It can further be used to more effectively trigger the offload
-		of selected traffic to a non-3GPP network.  Nowadays,
-		it is common that users are equipped with dual mode
-		mobile phones (e.g., integrating third/fourth
-		generation cellular and WiFi radio devices) capable of
-		attaching to available networks either sequentially or
-		simultaneously. With this scenario in mind, 3GPP is
-		currently looking at mechanisms to seamlessly and
-		selectively switch over a single IP flow (e.g., user
-		application) to a different radio access, while
-		keeping all other ongoing connections untouched. The
-		decision on when and which IP flows move is typically
-		based on static configured rules, whereas the use of
-		CONEX mechanisms could also factor in real-time
-		congestion information in the decision.
-	      </t>
+	    </t>
+	    <t>
+	      It can reduce the need for complex DPI by allowing for a
+	      bulk packet traffic management system that does not have
+	      to consider the application classes flows belong to and
+	      individual sessions. Instead, traffic management would
+	      be based on the current cost (contribution to
+	      congestion) incurred by different flows and enable
+	      operators to apply policing/accounting depending on
+	      their preference. Such traffic management would be
+	      simpler and more robust (no real-time flow application
+	      type identification required, no static configuration of
+	      application classes) and perform better as decisions can
+	      be taken based on real-time actual cost contribution.
+	      With CONEX, accurate downstream path
+	      information would be visible to ingress network
+	      operators, which can respond to incipient congestion in
+	      time. This can be equivalent to offering different
+	      levels of QoS, e.g. premium service with zero congestion
+	      response.  For that, ConEx could be used in two
+	      different ways:
+	      <list style="numbers">
+		<t> as additional information to assist network functions to
+		impose different QoS for different application sessions; and </t>
+		<t> as a tool to let applications decide on their response
+		to congestion notification, while incentivizing them to
+		react (in general) appropriately, e.g., by enforcing
+		overall limits for congestion contribution or by accounting
+		and charging for such congestion contribution.</t>
+	      </list>
+	    </t>
+
+	    <t>
+	      It can further be used to more effectively trigger the
+	      offload of selected traffic to a non-3GPP network.
+	      Nowadays, it is common that users are equipped with dual
+	      mode mobile phones (e.g., integrating third/fourth
+	      generation cellular and WiFi radio devices) capable of
+	      attaching to available networks either sequentially or
+	      simultaneously. With this scenario in mind, 3GPP is
+	      currently looking at mechanisms to seamlessly and
+	      selectively switch over a single IP flow (e.g., user
+	      application) to a different radio access, while keeping
+	      all other ongoing connections untouched. The decision on
+	      when and which IP flows move is typically based on
+	      static configured rules, whereas the use of CONEX
+	      mechanisms could also factor in real-time congestion
+	      information in the decision.
+	    </t>
 	  </list>
 	</t>
 
 	<t>
 	  In summary, it can be said that traffic management in 3GPP
-	  EPS and other mobile communication architectures in very
+	  EPS and other mobile communication architectures is very
 	  important. Currently, more static approaches based on
 	  admission control and static QoS are in use, but recently,
 	  there has been a perceived need for more dynamic mechanisms
-	  based on DPI. Introducing CONEX could make these mechanisms more
-	  efficient or even remove the need for some of the DPI functions
-	  deployed today. Adding CONEX support however might require slight
-	  changes to the PCC architecture, depending on the scope and
-	  impact of a CONEX-based traffic management approach.
+	  based on DPI. Introducing CONEX could make these mechanisms
+	  more efficient or even remove the need for some of the DPI
+	  functions deployed today. Adding CONEX support however might
+	  require <!-- slight --> changes to the PCC architecture,
+	  depending on the scope and impact of a CONEX-based traffic
+	  management approach.
 	</t>
     </section>
 
@@ -652,52 +671,6 @@ VPLMN                         |              |
 
     </section>
 
-    <section title="CONEX as a Form of Differential QoS">
-      <t>
-	As mentioned above, 3GPP mobile communication networks provide
-	an elaborate QoS architecture. In LTE, the idea is to map
-	different traffic classes onto different logical channels
-	(bearers) with individual QoS configuration.
-      </t>
-      <t>
-	It can be argued whether this approach is sufficient in a
-	world where most traffic is on TCP port 80 and whether 
-	more application control would be useful.
-      </t>
-      <t>
-	With CONEX, accurate downstream path information would be
-	visible to ingress network operators, which can respond to
-	incipient congestion in time. This can be equivalent to
-	offering different levels of QoS, e.g. premium service with
-	zero congestion response.
-      </t>
-
-      <t>
-	Again, CONEX could be used in two different ways:
-	<list style="numbers">
-	  <t> as additional information to assist network functions to
-	  impose different QoS for different application sessions; and </t>
-	  <t> as a tool to let applications decide on their response
-	  to congestion notification, while incentivizing them to
-	  react (in general) appropriately, e.g., by enforcing
-	  overall limits for congestion contribution or by accounting
-	  and charging for such congestion contribution.</t>
-	</list>
-      </t>
-
-<!-- [Dirk: I removed this for now - the DOS text seems to be a bit out of place for the differential QoS discussion. Also, the mentioning of marking etc. may be a bit too Re-ECN specific again.] -->
-<!--
-      <t>
-	Similarly, it can also be used for
-	defending against Denial-of-Service (DoS) attacks. For
-	instance, we it could provide different CONEX Marker's marking
-	probability mapping to the corresponding priority classes from
-	low to high. Such configuration can provide clear separation
-	and performance difference among different classes measured in
-	throughput.
-      </t>
--->
-    </section>
 
     <section title="Partial vs. Full Deployment">
       <t>
@@ -860,7 +833,9 @@ VPLMN                         |              |
 	      could still employ local policies, congestion accounting
 	      schemes etc., and they could use information about
 	      congestion contribution for determining interconnection
-	      agreements.
+	      agreements. This deployment scenario would imply the
+	      willingness of operators to expose congestion to each
+	      other.
 	    </t>
 	    <t>
 	     Isolated CONEX domains as depicted in <xref
@@ -1473,7 +1448,7 @@ Do we refer here just to, for example, UTRAN and E-UTRAN co-existance or also to
 
 	&I-D.draft-ietf-conex-destopt;
 
-	&I-D.draft-brisoe-initial-deploy;
+	&I-D.draft-briscoe-conex-initial-deploy;
 
 	&I-D.draft-briscoe-tsvwg-ecn-encap-guidelines;
 
@@ -1490,6 +1465,8 @@ Do we refer here just to, for example, UTRAN and E-UTRAN co-existance or also to
 	&tr23829;
 
 	&ts26114;
+
+	&ts23401;
 
 	&RFC6040;
 	
@@ -1553,28 +1530,53 @@ Do we refer here just to, for example, UTRAN and E-UTRAN co-existance or also to
   <t>
     We would like to thank Bob Briscoe and Ingemar Johansson for their
     support in shaping the overall idea and in improving the draft by
-    providing constructive comments.
+    providing constructive comments. We would also like to thank
+    Andreas Maeder and Dirk Staehle for reviewing the draft and for
+    providing helpful comments.
   </t>
 </section>
 
-<!--
+
     <section title="ChangeLog">
-      <t>
-	<list>
-	  <t>changed title to "Mobile Communication Congestion Exposure Scenario" (was "use case")</t>
-	  <t>added new section 3 on "CONEX Uses Cases in mobile communication scenario"</t>
-	  <t>removed "Motivation" section in section 4</t>
-	  <t>removed "isolated connex deployment section in section 4"</t>
-	  <t>renamed "EPS integration" section in section 4 to "Additional EPS integration options"</t>
-	  <t>added a (still empty) summary section to section 4</t>
-	  <t>s/Re-ECN/CONEX/g</t>
-	  <t>added references</t>
-	  <t>added acknowledgments</t>
-	</list>
-      </t>
+      <section title="draft-ietf-conex-mobile-03">
+	<t>
+	  <list style="symbols">
+	    <t>implemented suggestions for improving 3GPP EPS descriptions by Andreas Maeder</t>
+	    <t>mentioned 3GPP UPCON and added reference</t>
+	    <t>updated references</t>
+	    
+	    <t>In section 3.1 (CONEX as a Basis for Traffic
+	    Management), changed the wording in the first abstract of
+	    the enumerated list to state that ConEx can enable/enhance
+	    flow policy-based traffic management -- not DPI (as we
+	    earlier said). DPI is not the objective -- it is the tool
+	    that is currently used...</t>
+
+	    <t>merged section 3.4 (CONEX as a Form of Differential
+	    QoS) into 3.1 (CONEX as a Basis for Traffic
+	    Management)</t>
+	  </list>
+	</t>
+      </section>
+
+      <section title="Earlier">
+	<t>
+	  <list style="symbols">
+	    <t>changed title to "Mobile Communication Congestion Exposure Scenario" (was "use case")</t>
+	    <t>added new section 3 on "CONEX Uses Cases in mobile communication scenario"</t>
+	    <t>removed "Motivation" section in section 4</t>
+	    <t>removed "isolated connex deployment section in section 4"</t>
+	    <t>renamed "EPS integration" section in section 4 to "Additional EPS integration options"</t>
+	    <t>added a (still empty) summary section to section 4</t>
+	    <t>s/Re-ECN/CONEX/g</t>
+	    <t>added references</t>
+	    <t>added acknowledgments</t>
+	  </list>
+	</t>
+      </section>
     </section>
 
--->
+
 
 <!--
         <section title="TODO">
