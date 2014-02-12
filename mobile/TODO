@@ -8,4 +8,13 @@ version -03
 
   - how static is this really? (ANDSF?)
 
+- refer to draft-briscoe-conex-policing-00
 
+- s/CONEX/ConEx/
+
+- ConEx in general can make users "pay" (or at least suffer) from
+  insufficient capacity (because they are expected to back off). In
+  wireless networks this can be the case even more so, because cells
+  can be unevenly populated, higher distance to base stations can lead
+  to higher resource usage and potentially higher marking
+  probability. Is this an issue we want to mention?

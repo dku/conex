@@ -272,6 +272,8 @@
 	useful are resource allocation and flow management. </t>
 	
 	<t>
+	  TODO: reference?
+	  
 	  Analysis of cellular network data traffic has shown that
 	  most flows are short-lived and low-volume, but a
 	  comparatively small number of high-volume flows constitute a
@@ -282,7 +284,7 @@
 	  limited and expensive resources (e.g. the wireless
 	  spectrum), resource allocation and usage accountability are
 	  two important issues for operators to solve in order to
-	  achieve a better network resource utilization and fair
+	  achieve both a better network resource utilization and fair
 	  resource sharing.  CONEX, as described in <xref
 	  target="RFC6789"></xref>, is a technology that can be used
 	  to achieve these goals.
@@ -321,7 +323,7 @@
 
 
 
-    <section title="CONEX Use Cases in the Mobile Communication Scenario" anchor="sec.use-cases">
+    <section title="CONEX Use Cases in Mobile Communication Networks" anchor="sec.use-cases">
       <t>
 	In general, quality of service and good network resource
 	utilization are important requirements for mobile
@@ -340,14 +342,11 @@
       <t>
 	In the following, we discuss ways how congestion exposure
 	could be beneficial for supporting resource management in such
-	mobile communication networks.  <xref
-	target="RFC6789"/> describes fundamental
-	congestion exposure concepts and a set of use cases for
-	applying congestion exposure mechanisms to realize different
-	traffic management functions such as accounting based on users'
-	contribution to network congestion and others. In this document, we relate
-	these CONEX use cases to the general mobile communication
-	scenario in order to validate the use cases for this particular scenario.
+	mobile communication networks.  <xref target="RFC6789"/>
+	describes fundamental congestion exposure concepts and a set
+	of use cases for applying congestion exposure mechanisms to
+	realize different traffic management functions such as flow
+	policy-based traffic management or traffic offloading.
       </t>
 
       <section title="CONEX as a Basis for Traffic Management">
@@ -356,9 +355,13 @@
 	  communication networks. Since wireless resources are
 	  considered scarce and since user mobility and shared
 	  bandwidth in the wireless access create certain dynamics
-	  with respect to available bandwidth, these resources are
-	  traditionally managed very tightly (admission control for
-	  bearer establishment etc.).
+	  with respect to available bandwidth, commercially operated
+	  mobile networks provide mechanisms for tight resource
+	  management (admission control for bearer establishment) --
+	  however sometimes these mechanisms are not easily applicable
+	  to IP- and HTTP-dominated traffic mixes, for example, most
+	  Internet traffic in todays mobile network is transmitted
+	  over the (best-effort) default bearer.
 	</t>
 	<t>
 	  In the EPS, the QoS requirements for different services
@@ -372,32 +375,33 @@
 	  crosses different interfaces in the network and maps to
 	  lower layer bearers for packet forwarding. A radio bearer
 	  transports traffic between a UE and eNB whereas an S1 bearer
-	  transports traffic between the eNB and S-GW. Primarily LTE
-	  offers two types of bearer: a guaranteed bit rate bearer for
-	  real-time communication, e.g., voice calls and a
-	  non-guaranteed bit rate bearer for best effort traffic for
-	  Internet access etc. Packets mapped to the same EPS bearer
-	  receive the same bearer-level packet forwarding treatment.
+	  transports traffic between the eNB and S-GW and an S5/S8
+	  bearer between the S-GW and P-GW. Primarily LTE offers two
+	  types of bearer: a guaranteed bit rate bearer for real-time
+	  communication, e.g., voice calls and a non-guaranteed bit
+	  rate bearer for best effort traffic for Internet access
+	  etc. In addition, different non-guaranteed bit rater bearers
+	  can be assigned different priorities. Packets mapped to the
+	  same EPS bearer (and priority) receive the same bearer-level
+	  packet forwarding treatment.
 	</t>
 	<t>
 	  In the light of the significant increase of overall data
 	  volume in 3G networks, Deep-Packet-Inspection (DPI) is often
 	  considered a desirable function to have in the EPC -- on,
 	  for example, a PDN (Packet Data Network) gateway, and some
-	  operators do in fact deploy DPI today. 3GPP has a current
-	  work item on "Service Awareness and Privacy Policies" that
-	  is chartered to add DPI-related extensions to the Policy and Charging Control (PCC)
-	  architecture <xref target="3GPP.23.203"/>. The (optional)
-	  DPI entity in the EPC is called "Traffic Detection Function"
-	  (TDF). It performs application detection and reporting
-	  of detected applications and its service data flow
+	  operators do in fact deploy DPI today. The Policy and
+	  Charging Control (PCC) architecture <xref
+	  target="3GPP.23.203"/> provides a "Traffic Detection
+	  Function" (TDF) that performs application detection and
+	  reporting of detected applications and its service data flow
 	  description to the Policy Control and Charging Rules
 	  Function (PCRF) for performing functions such as traffic
 	  blocking, redirection or policing for selected flows.
 	</t>
 	<t>
-	  Congestion exposure can be employed to address these
-	  requirements for tight resource management in different ways:
+	  Congestion exposure can be employed to address resource
+	  management requirements in different ways:
 	  <list style="numbers">
 	    <t>
 	      It can enable or enhance flow policy-based traffic
@@ -408,13 +412,17 @@
 	      overload situations, operators use DPI to identify
 	      dispensable flows and make them yield to other flows (of
 	      different application classes) through policing. Such
-	      traffic management is thus based on static configuration
-	      and some estimation about the future per-flow bandwidth
-	      demand. With congestion exposure it would be possible to
-	      assess the contribution to congestion of individual
-	      flows. This information can then be used as input to a
-	      policer that can optimize network utilization more
-	      accurately and dynamically.
+	      traffic management is thus based on operator decisions
+	      -- using partly static configuration and some estimation
+	      about the future per-flow bandwidth demand. With
+	      congestion exposure it would be possible to assess the
+	      contribution to congestion of individual flows. This
+	      information can then be used as input to a policer that
+	      can optimize network utilization more accurately and
+	      dynamically. By using ConEx congestion contribution as a
+	      metric, such policers would not need to be aware of
+	      specific link load (e.g., in wireless base stations) or
+	      flow application types.
 	    </t>
 	    <t>
 	      It can reduce the need for complex DPI by allowing for a
@@ -439,11 +447,18 @@
 	      <list style="numbers">
 		<t> as additional information to assist network functions to
 		impose different QoS for different application sessions; and </t>
-		<t> as a tool to let applications decide on their response
-		to congestion notification, while incentivizing them to
-		react (in general) appropriately, e.g., by enforcing
-		overall limits for congestion contribution or by accounting
-		and charging for such congestion contribution.</t>
+		<t> as a tool to let applications decide on their
+		response to congestion notification, while
+		incentivizing them to react (in general)
+		appropriately, e.g., by enforcing overall limits for
+		congestion contribution or by accounting and charging
+		for such congestion contribution. Note that this level
+		of responsiveness would be on a different level then,
+		say, application-layer responsive in protocols such as
+		DASH <xref target="dash"/>, however it could interwork
+		with such protocols, for example by triggering earlier
+		responses.
+		</t>
 	      </list>
 	    </t>
 
@@ -1398,7 +1413,13 @@ Do we refer here just to, for example, UTRAN and E-UTRAN co-existance or also to
 	  <seriesInfo name="in proceedings of" value="7th EURO-NF CONFERENCE ON NEXT GENERATION INTERNET"/>
 	</reference>
 
-
+	<reference anchor="dash">
+	  <front>
+	    <title>ISO/IEC 23009-1: Information Technology -- Dynamic Adaptive Streaming over HTTP (DASH) --</title>
+	    <author surname="ISO/IEC"/>
+	    <date year="2012" month="April"/>
+	  </front>
+	</reference>
 
 
     </references>
@@ -1561,6 +1582,11 @@ VPLMN                         |              |
 	    Management)</t>
 
 	    <t>moved section 2 (Overview of 3GPP's Evolved Packet System (EPS)) to appendix.</t>
+
+	    <t>renamed section "CONEX Use Cases in the Mobile Communication Scenario" to "CONEX Use Cases in Mobile Communication Networks" </t>
+
+	    <t>updated TDF text in "CONEX as a Basis for Traffic Management" </t>
+
 	  </list>
 	</t>
       </section>
