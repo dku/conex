@@ -39,6 +39,9 @@
 <!ENTITY ts23402 SYSTEM "http://xml.resource.org/public/rfc/bibxml5/reference.3GPP.23.402.xml">
 <!ENTITY tr23829 SYSTEM "http://xml.resource.org/public/rfc/bibxml5/reference.3GPP.23.829.xml">
 <!ENTITY ts26114 SYSTEM "http://xml.resource.org/public/rfc/bibxml5/reference.3GPP.26.114.xml">
+<!ENTITY tr23705 SYSTEM "http://xml.resource.org/public/rfc/bibxml5/reference.3GPP.23.705.xml">
+
+
 
 ]>
 
@@ -272,8 +275,7 @@
 	useful are resource allocation and flow management. </t>
 	
 	<t>
-	  TODO: reference?
-	  
+<!--	  TODO: reference? -->
 	  Analysis of cellular network data traffic has shown that
 	  most flows are short-lived and low-volume, but a
 	  comparatively small number of high-volume flows constitute a
@@ -1202,6 +1204,13 @@
 </t>
 
 <t>
+  CONEX may also be used to complement 3GPP-based mechanisms for
+  congestion management which are currently under development, such as
+  in the User Plane Congestion Management (UPCON) work item described
+  in <xref target="3GPP.23.705"/>.
+</t>
+
+<t>
   We have described a few possibilities for adding CONEX as a
   mechanism to 3GPP LTE-based networks and have shown how this could
   be done incrementally (starting with partial deployment). It is
@@ -1372,6 +1381,8 @@ Do we refer here just to, for example, UTRAN and E-UTRAN co-existance or also to
 	&ts26114;
 
 	&ts23401;
+
+	&tr23705;
 
 	&RFC6040;
 	
@@ -1586,6 +1597,8 @@ VPLMN                         |              |
 	    <t>renamed section "CONEX Use Cases in the Mobile Communication Scenario" to "CONEX Use Cases in Mobile Communication Networks" </t>
 
 	    <t>updated TDF text in "CONEX as a Basis for Traffic Management" </t>
+
+	    <t>added reference to 3GPP UPCON to summary</t>
 
 	  </list>
 	</t>
