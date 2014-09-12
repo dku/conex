@@ -85,7 +85,9 @@ Table of Contents
    4.  Summary  . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
    5.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 18
    6.  Security Considerations  . . . . . . . . . . . . . . . . . . . 19
-   7.  Informative References . . . . . . . . . . . . . . . . . . . . 19
+   7.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+     7.1.  Normative References . . . . . . . . . . . . . . . . . . . 19
+     7.2.  Informative References . . . . . . . . . . . . . . . . . . 19
    Appendix A.  Acknowledgments . . . . . . . . . . . . . . . . . . . 21
    Appendix B.  Overview of 3GPP's Evolved Packet System (EPS)  . . . 21
    Appendix C.  ChangeLog . . . . . . . . . . . . . . . . . . . . . . 23
@@ -93,8 +95,6 @@ Table of Contents
      C.2.  draft-ietf-conex-mobile-03 . . . . . . . . . . . . . . . . 23
      C.3.  Earlier  . . . . . . . . . . . . . . . . . . . . . . . . . 24
    Authors' Addresses . . . . . . . . . . . . . . . . . . . . . . . . 24
-
-
 
 
 
@@ -126,7 +126,7 @@ Internet-Draft            ConEx Mobile Scenario           September 2014
    Analysis of cellular network data traffic has shown that most flows
    are short-lived and low-volume, but a comparatively small number of
    high-volume flows constitute a large fraction of the overall traffic
-   volume [lte-sigcomm2013].  Measurements have also shown that a small
+   volume [lte-sigcomm2013].  That means that potentially a small
    fraction of users is responsible for the majority of traffic in
    cellular networks.  In view of such highly skewed user behavior and
    limited and expensive resources (e.g. the wireless spectrum),
@@ -1016,7 +1016,15 @@ Internet-Draft            ConEx Mobile Scenario           September 2014
    protocols.
 
 
-7.  Informative References
+7.  References
+
+7.1.  Normative References
+
+   [RFC6789]  Briscoe, B., Woundy, R., and A. Cooper, "Congestion
+              Exposure (ConEx) Concepts and Use Cases", RFC 6789,
+              December 2012.
+
+7.2.  Informative References
 
    [3GPP.23.203]
               3GPP, "Policy and charging control architecture", 3GPP
@@ -1049,14 +1057,6 @@ Internet-Draft            ConEx Mobile Scenario           September 2014
               Tunnelling Protocol (GTP) across the Gn and Gp interface",
               3GPP TS 29.060 3.19.0, March 2004.
 
-   [3GPP.29.274]
-              3GPP, "3GPP Evolved Packet System (EPS); Evolved General
-              Packet Radio Service (GPRS) Tunnelling Protocol for
-              Control plane (GTPv2-C); Stage 3", 3GPP TS 29.274 10.11.0,
-              June 2013.
-
-   [3GPP.36.300]
-              3GPP, "Evolved Universal Terrestrial Radio Access (E-UTRA)
 
 
 
@@ -1065,6 +1065,14 @@ Kutscher, et al.         Expires March 16, 2015                [Page 19]
 Internet-Draft            ConEx Mobile Scenario           September 2014
 
 
+   [3GPP.29.274]
+              3GPP, "3GPP Evolved Packet System (EPS); Evolved General
+              Packet Radio Service (GPRS) Tunnelling Protocol for
+              Control plane (GTPv2-C); Stage 3", 3GPP TS 29.274 10.11.0,
+              June 2013.
+
+   [3GPP.36.300]
+              3GPP, "Evolved Universal Terrestrial Radio Access (E-UTRA)
               and Evolved Universal Terrestrial Radio Access Network
               (E-UTRAN); Overall description; Stage 2", 3GPP TS 36.300
               10.11.0, September 2013.
@@ -1096,10 +1104,6 @@ Internet-Draft            ConEx Mobile Scenario           September 2014
    [RFC6040]  Briscoe, B., "Tunnelling of Explicit Congestion
               Notification", RFC 6040, November 2010.
 
-   [RFC6789]  Briscoe, B., Woundy, R., and A. Cooper, "Congestion
-              Exposure (ConEx) Concepts and Use Cases", RFC 6789,
-              December 2012.
-
    [RFC6817]  Shalunov, S., Hazel, G., Iyengar, J., and M. Kuehlewind,
               "Low Extra Delay Background Transport (LEDBAT)", RFC 6817,
               December 2012.
@@ -1109,10 +1113,6 @@ Internet-Draft            ConEx Mobile Scenario           September 2014
               Networks", in proceedings of ACM SIGCOMM-2014 Capacity
               Sharing Workshop (CSWS-2014), August 2014.
 
-   [dash]     ISO/IEC, "ISO/IEC 23009-1: Information Technology --
-              Dynamic Adaptive Streaming over HTTP (DASH) --",
-              April 2012.
-
 
 
 
@@ -1120,6 +1120,10 @@ Kutscher, et al.         Expires March 16, 2015                [Page 20]
 
 Internet-Draft            ConEx Mobile Scenario           September 2014
 
+
+   [dash]     ISO/IEC, "ISO/IEC 23009-1: Information Technology --
+              Dynamic Adaptive Streaming over HTTP (DASH) --",
+              April 2012.
 
    [lte-sigcomm2013]
               Huang, Qian, Guo, Zhou, Xu, Mao, Sen, and Spatscheck, "An
@@ -1165,10 +1169,6 @@ Appendix B.  Overview of 3GPP's Evolved Packet System (EPS)
    The EPS architecture and some of its standardized interfaces are
    depicted in Figure 1.  The EPS provides IP connectivity to user
    equipment (UE) (i.e., mobile nodes) and access to operator services,
-   such as global Internet access and voice communications.  The EPS
-   comprises the radio access network called evolved UMTS Terrestrial
-   Radio Access Network (E-UTRAN) and the core network called Evolved
-   Packet Core (EPC).  QoS is supported through an EPS bearer concept,
 
 
 
@@ -1177,6 +1177,10 @@ Kutscher, et al.         Expires March 16, 2015                [Page 21]
 Internet-Draft            ConEx Mobile Scenario           September 2014
 
 
+   such as global Internet access and voice communications.  The EPS
+   comprises the radio access network called evolved UMTS Terrestrial
+   Radio Access Network (E-UTRAN) and the core network called Evolved
+   Packet Core (EPC).  QoS is supported through an EPS bearer concept,
    providing bindings to resource reservation within the network.
 
    The evolved NodeB (eNB), the Long Term Evolution (LTE) base station,
@@ -1217,10 +1221,6 @@ Internet-Draft            ConEx Mobile Scenario           September 2014
    Importantly, we observe that these tunneling protocols give the
    operator a large degree of flexibility to control the congestion
    mechanism incorporated with the GTP/PMIPv6 protocols.
-
-
-
-
 
 
 

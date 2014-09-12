@@ -271,13 +271,12 @@
 	useful are resource allocation and flow management. </t>
 	
 	<t>
-<!--	  TODO: reference? -->
 	  Analysis of cellular network data traffic has shown that
 	  most flows are short-lived and low-volume, but a
 	  comparatively small number of high-volume flows constitute a
 	  large fraction of the overall traffic volume <xref
-	  target="lte-sigcomm2013"/>. Measurements have also shown
-	  that a small fraction of users is responsible for the
+	  target="lte-sigcomm2013"/>. That means that potentially a 
+	  small fraction of users is responsible for the
 	  majority of traffic in cellular networks. In view of such
 	  highly skewed user behavior and limited and expensive
 	  resources (e.g. the wireless spectrum), resource allocation
@@ -288,7 +287,7 @@
 	  that can be used to achieve these goals.
         </t>
   
-  <t>
+  	<t>
 	The CONEX congestion exposure mechanism is designed to be a
 	general technology that could be applied as a key element of
 	congestion management solutions for a variety of use cases. The
@@ -297,6 +296,7 @@
 	destination end hosts are CONEX-enabled but other networks need
 	not be.
       </t>
+
       <t>
 	A specific example of such a use case can be a mobile
 	communication network such as a 3GPP Evolved Packet System
@@ -306,6 +306,7 @@
 	support the CONEX mechanisms, and the network provides
 	policing/auditing functions at its edges.
       </t>
+
       <t>
 	This document provides a brief overview of the architecture of
 	such networks (access and core networks) and current QoS
@@ -1387,15 +1388,13 @@ Do we refer here just to, for example, UTRAN and E-UTRAN co-existance or also to
      with a value containing a set of directories to search.  These can be either in the local
      filing system or remote ones accessed by http (http://domain/dir/... ).-->
 
-<!--
+
     <references title="Normative References">
-      &RFC2119;
+	&RFC6789;
     </references>
--->
+
 
     <references title="Informative References">
-
-	&RFC6789;
 
 <!--
     	&I-D.draft-ietf-conex-concepts-uses;
