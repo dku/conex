@@ -275,17 +275,17 @@
 	  Analysis of cellular network data traffic has shown that
 	  most flows are short-lived and low-volume, but a
 	  comparatively small number of high-volume flows constitute a
-	  large fraction of the overall traffic volume. Measurements
-	  have also shown that a small fraction of users is
-	  responsible for the majority of traffic in cellular
-	  networks. In view of such highly skewed user behavior and
-	  limited and expensive resources (e.g. the wireless
-	  spectrum), resource allocation and usage accountability are
-	  two important issues for operators to solve in order to
-	  achieve both a better network resource utilization and fair
-	  resource sharing.  CONEX, as described in <xref
-	  target="RFC6789"></xref>, is a technology that can be used
-	  to achieve these goals.
+	  large fraction of the overall traffic volume <xref
+	  target="lte-sigcomm2013"/>. Measurements have also shown
+	  that a small fraction of users is responsible for the
+	  majority of traffic in cellular networks. In view of such
+	  highly skewed user behavior and limited and expensive
+	  resources (e.g. the wireless spectrum), resource allocation
+	  and usage accountability are two important issues for
+	  operators to solve in order to achieve both a better network
+	  resource utilization and fair resource sharing.  CONEX, as
+	  described in <xref target="RFC6789"></xref>, is a technology
+	  that can be used to achieve these goals.
         </t>
   
   <t>
@@ -1484,20 +1484,23 @@ Do we refer here just to, for example, UTRAN and E-UTRAN co-existance or also to
 	</reference>
 
 
+	<reference anchor="lte-sigcomm2013">
+	  <front>
+	    <title>An In-depth Study of LTE: Effect of Network Protocol and Application Behavior on Performance</title>
+	    <author surname="Huang" fullname="Junxian Huang"/>
+	    <author surname="Qian" fullname="Feng Qian"/>
+	    <author surname="Guo" fullname="Yihua Guo"/>
+	    <author surname="Zhou" fullname="Yuanyuan Zhou"/>
+	    <author surname="Xu" fullname="Qiang Xu"/>
+	    <author surname="Mao" fullname="Z. Morley Mao"/>
+	    <author surname="Sen" fullname="Subhabrata Sen"/>
+	    <author surname="Spatscheck" fullname="Oliver Spatscheck"/>
+	    <date year="2013" month="August"/>
+	  </front>
+	  <seriesInfo name="in proceedings of" value="ACM SIGCOMM-2013"/>
+	</reference>
+    </references>
 
-    </references>
-<!--	<front>
-	  <title>
-	  </title>
-	  <author></author>
-	  <date>
-	  </date>
-	</front>
-      </reference>
-      
-    </references>
--->
-<!-- to be removed before submitting -->
 
 
 <section title="Acknowledgments">
@@ -1629,6 +1632,8 @@ VPLMN                         |              |
       <section title="draft-ietf-conex-mobile-04">
 	<t>
 	  <list style="symbols">
+	    <t>added conex lite to deployment scenarios</t>
+	    <t>added reference to LTE study paper at SIGCOMM-2013"</t>
 	    <t>updated references</t>
 	  </list>
 	</t>
