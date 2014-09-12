@@ -19,13 +19,14 @@ Expires: March 16, 2015                                              NEC
 Abstract
 
    This memo describes a mobile communications use case for congestion
-   exposure (CONEX) with a particular focus on mobile communication
-   networks such as the 3GPP Evolved Packet System (EPS).  The draft
-   provides a brief overview of the architecture of these networks (both
-   access and core networks), current QoS mechanisms and then discusses
-   how congestion exposure concepts could be applied.  Based on this,
-   this memo suggests a set of requirements for CONEX mechanisms that
-   particularly apply to mobile networks.
+   exposure (CONEX) with a particular focus on those mobile
+   communication networks that are architecturally similar to the 3GPP
+   Evolved Packet System (EPS).  The draft provides a brief overview of
+   the architecture of these networks (both access and core networks),
+   current QoS mechanisms and then discusses how congestion exposure
+   concepts could be applied.  Based on this, this memo suggests a set
+   of requirements for CONEX mechanisms that particularly apply to these
+   mobile networks.
 
 Status of this Memo
 
@@ -48,7 +49,6 @@ Copyright Notice
 
    Copyright (c) 2014 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
-
 
 
 
