@@ -83,7 +83,7 @@ Table of Contents
        3.2.1.  CONEX Protocol Mechanisms  . . . . . . . . . . . . . . 14
        3.2.2.  CONEX Functions in the Mobile Network  . . . . . . . . 15
    4.  Summary  . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
-   5.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 19
+   5.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 18
    6.  Security Considerations  . . . . . . . . . . . . . . . . . . . 19
    7.  Informative References . . . . . . . . . . . . . . . . . . . . 19
    Appendix A.  Acknowledgments . . . . . . . . . . . . . . . . . . . 21
@@ -902,10 +902,6 @@ Internet-Draft            ConEx Mobile Scenario           September 2014
    be accessed by PCC entities such as the PCRF for dynamic updates,
    enforcement etc.
 
-   A more detailed description of the different approaches and their
-   respective advantages will be provided in a future revision of this
-   document.
-
 
 4.  Summary
 
@@ -945,6 +941,10 @@ Internet-Draft            ConEx Mobile Scenario           September 2014
       resources and more stringent QoS requirements -- the feasibility
       of applying CONEX as well as its performance and deployment
       scenarios need to be examined closer.  For instance, a mobile
+      communication network may encounter longer delay and higher loss
+      rates, which can impose specific requirements on the timeliness
+      and accuracy of congestion exposure information.
+
 
 
 
@@ -952,10 +952,6 @@ Kutscher, et al.         Expires March 16, 2015                [Page 17]
 
 Internet-Draft            ConEx Mobile Scenario           September 2014
 
-
-      communication network may encounter longer delay and higher loss
-      rates, which can impose specific requirements on the timeliness
-      and accuracy of congestion exposure information.
 
    Mobility:  One of the unique characteristics in cellular network is
       the presence of user mobility compared to wired networks.  As the
@@ -999,6 +995,10 @@ Internet-Draft            ConEx Mobile Scenario           September 2014
    only static information.
 
 
+5.  IANA Considerations
+
+   No IANA considerations.
+
 
 
 
@@ -1007,11 +1007,6 @@ Internet-Draft            ConEx Mobile Scenario           September 2014
 Kutscher, et al.         Expires March 16, 2015                [Page 18]
 
 Internet-Draft            ConEx Mobile Scenario           September 2014
-
-
-5.  IANA Considerations
-
-   No IANA considerations.
 
 
 6.  Security Considerations
@@ -1057,6 +1052,11 @@ Internet-Draft            ConEx Mobile Scenario           September 2014
    [3GPP.29.274]
               3GPP, "3GPP Evolved Packet System (EPS); Evolved General
               Packet Radio Service (GPRS) Tunnelling Protocol for
+              Control plane (GTPv2-C); Stage 3", 3GPP TS 29.274 10.11.0,
+              June 2013.
+
+   [3GPP.36.300]
+              3GPP, "Evolved Universal Terrestrial Radio Access (E-UTRA)
 
 
 
@@ -1065,11 +1065,6 @@ Kutscher, et al.         Expires March 16, 2015                [Page 19]
 Internet-Draft            ConEx Mobile Scenario           September 2014
 
 
-              Control plane (GTPv2-C); Stage 3", 3GPP TS 29.274 10.11.0,
-              June 2013.
-
-   [3GPP.36.300]
-              3GPP, "Evolved Universal Terrestrial Radio Access (E-UTRA)
               and Evolved Universal Terrestrial Radio Access Network
               (E-UTRAN); Overall description; Stage 2", 3GPP TS 36.300
               10.11.0, September 2013.
@@ -1114,16 +1109,17 @@ Internet-Draft            ConEx Mobile Scenario           September 2014
               Networks", in proceedings of ACM SIGCOMM-2014 Capacity
               Sharing Workshop (CSWS-2014), August 2014.
 
+   [dash]     ISO/IEC, "ISO/IEC 23009-1: Information Technology --
+              Dynamic Adaptive Streaming over HTTP (DASH) --",
+              April 2012.
+
+
 
 
 Kutscher, et al.         Expires March 16, 2015                [Page 20]
 
 Internet-Draft            ConEx Mobile Scenario           September 2014
 
-
-   [dash]     ISO/IEC, "ISO/IEC 23009-1: Information Technology --
-              Dynamic Adaptive Streaming over HTTP (DASH) --",
-              April 2012.
 
    [lte-sigcomm2013]
               Huang, Qian, Guo, Zhou, Xu, Mao, Sen, and Spatscheck, "An
@@ -1169,6 +1165,10 @@ Appendix B.  Overview of 3GPP's Evolved Packet System (EPS)
    The EPS architecture and some of its standardized interfaces are
    depicted in Figure 1.  The EPS provides IP connectivity to user
    equipment (UE) (i.e., mobile nodes) and access to operator services,
+   such as global Internet access and voice communications.  The EPS
+   comprises the radio access network called evolved UMTS Terrestrial
+   Radio Access Network (E-UTRAN) and the core network called Evolved
+   Packet Core (EPC).  QoS is supported through an EPS bearer concept,
 
 
 
@@ -1177,10 +1177,6 @@ Kutscher, et al.         Expires March 16, 2015                [Page 21]
 Internet-Draft            ConEx Mobile Scenario           September 2014
 
 
-   such as global Internet access and voice communications.  The EPS
-   comprises the radio access network called evolved UMTS Terrestrial
-   Radio Access Network (E-UTRAN) and the core network called Evolved
-   Packet Core (EPC).  QoS is supported through an EPS bearer concept,
    providing bindings to resource reservation within the network.
 
    The evolved NodeB (eNB), the Long Term Evolution (LTE) base station,
@@ -1221,6 +1217,10 @@ Internet-Draft            ConEx Mobile Scenario           September 2014
    Importantly, we observe that these tunneling protocols give the
    operator a large degree of flexibility to control the congestion
    mechanism incorporated with the GTP/PMIPv6 protocols.
+
+
+
+
 
 
 
