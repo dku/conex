@@ -752,6 +752,23 @@
 	     gateways (as in today's deployments) that are associated
 	     with policing and accounting functions.
 	    </t>
+	    <t>
+	      <xref target="conex-lite"/> describes an approach called
+	      "ConEx Lite" for mobile networks that is intended for
+	      initial deployment of congestion exposure concepts in
+	      LTE, specifically in the backhaul and core network
+	      segments. As depicted in <xref
+	      target="fig.deployment-option3"/> ConEx Lite allows a
+	      tunnel receiver to monitor the volume of bytes that has
+	      been lost or dropped (or ECN-CE marked) between the
+	      tunnel sender and receiver. For that purpose, a new
+	      field is introduced to the tunnel header called the Byte
+	      Sequence Marker (BSN) that identifies the byte in the
+	      flow of data from the tunnel sender to the tunnel
+	      receiver. A policer at the tunnel sender is expected to
+	      re-act according to the tunnel congestion volume (see
+	      <xref target="conex-lite"/> for details.)
+	    </t>
 	  </list>
       </t>
 
@@ -819,7 +836,7 @@
         <artwork>
 -----------------------------------------------------
 |   |---            CONEX path            ---|      |
-|   v                                        v
+|   v                                        v      |
 |  +----+     +-------+     +-------+     +-------+ |
 |  | UE |=====|  eNB  |=====|  S-GW |=====|  P-GW | |
 |  +----+     +-------+     +-------+     +-------+ |
@@ -842,6 +859,33 @@
 -----------------------------------------------------
         </artwork>
 	 </figure>
+
+
+         <figure title="CONEX-lite deployment" anchor="fig.deployment-option3">
+        <artwork>
+                Backhaul Network     Core Network
+               +---------------+  +--------------+
+               |               |  |              |
+               | BSN or ECN-CE |  |              |
+               | marked        |  |              |
+               | packets       |  |              |
+               |    &lt;---       |  |              |                  
++----+     +-------+       +----------+       +-------+  +--------+
+|    |     |       | GTP-U |          | GTP-U |       |  |        |
+| UE |=====|  eNB  |=======|   S-GW   |=======|  P-GW |==|Internet|
+|    |     |       | Tunnel|          | Tunnel|       |  |        |
++----+     +-------+       +----------+       +-------+  +--------+
+               |    --->       |  |              |  
+               | User/control  |  | User/control | 
+               | packets with  |  | packet with  | 
+               | DL congestion |  | DL congestion| 
+               | vol counters  |  | vol counters | 
+               |               |  |              | 
+               +---------------+  +--------------+       
+        </artwork>
+	 </figure>
+
+
 
 	 <t>
 	   We consider all three scenarios to be relevant and believe
@@ -1429,6 +1473,18 @@ Do we refer here just to, for example, UTRAN and E-UTRAN co-existance or also to
 	</reference>
 
 
+	<reference anchor="conex-lite">
+	  <front>
+	    <title>ConEx Lite for Mobile Networks</title>
+	    <author surname="Baillargeon" fullname="Steve Baillargeon"/>
+	    <author surname="Johansson" fullname="Ingemar Johansson"/>
+	    <date year="2014" month="August"/>
+	  </front>
+	  <seriesInfo name="in proceedings of" value="ACM SIGCOMM-2014 Capacity Sharing Workshop (CSWS-2014)"/>
+	</reference>
+
+
+
     </references>
 <!--	<front>
 	  <title>
@@ -1570,6 +1626,14 @@ VPLMN                         |              |
 
 
     <section title="ChangeLog">
+      <section title="draft-ietf-conex-mobile-04">
+	<t>
+	  <list style="symbols">
+	    <t>updated references</t>
+	  </list>
+	</t>
+      </section>
+
       <section title="draft-ietf-conex-mobile-03">
 	<t>
 	  <list style="symbols">
