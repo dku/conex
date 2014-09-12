@@ -161,7 +161,7 @@ Internet-Draft            ConEx Mobile Scenario           September 2014
    resources, and bandwidth (and radio resource) demand is difficult to
    predict precisely due to user mobility, radio propagation effects
    etc.  Hence today's architectures and protocols go to significant
-   extent in order to provide network-controlled quality of service --
+   extent in order to provide network-controlled quality of service.
 
 
 
@@ -170,10 +170,8 @@ Kutscher, et al.         Expires March 16, 2015                 [Page 3]
 Internet-Draft            ConEx Mobile Scenario           September 2014
 
 
-   for instance by 3GPP's EPS bearer model that enables the network to
-   allocate service data flows (SDFs) to certain EPS bearers with
-   specific quality of service classes (which can be used for fine-
-   granular service differentiation).
+   These efforts often lead to complexity and cost.  CONEX could be
+   simpler approach to efficient resource sharing in these networks.
 
    In the following, we discuss ways how congestion exposure could be
    beneficial for supporting resource management in such mobile
@@ -181,6 +179,8 @@ Internet-Draft            ConEx Mobile Scenario           September 2014
    exposure concepts and a set of use cases for applying congestion
    exposure mechanisms to realize different traffic management functions
    such as flow policy-based traffic management or traffic offloading.
+   Readers that are not familiar with the 3GPP Evolved Packet System
+   (EPS) should refer to Appendix B first.
 
 2.1.  CONEX as a Basis for Traffic Management
 

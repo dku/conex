@@ -238,13 +238,13 @@
     <abstract>
       <t>
 	This memo describes a mobile communications use case for
-	congestion exposure (CONEX) with a particular focus on those mobile
+	congestion exposure (ConEx) with a particular focus on those mobile
 	communication networks that are architecturally similar to the 3GPP Evolved Packet System
 	(EPS). The draft provides a brief overview of the architecture
 	of these networks (both access and core networks), current QoS
 	mechanisms and then discusses how congestion exposure concepts
 	could be applied. Based on this, this memo suggests a set of
-	requirements for CONEX mechanisms that particularly apply to
+	requirements for ConEx mechanisms that particularly apply to
 	these mobile networks.
       </t>
     </abstract>
@@ -282,18 +282,18 @@
 	  resources (e.g. the wireless spectrum), resource allocation
 	  and usage accountability are two important issues for
 	  operators to solve in order to achieve both a better network
-	  resource utilization and fair resource sharing.  CONEX, as
+	  resource utilization and fair resource sharing.  ConEx, as
 	  described in <xref target="RFC6789"></xref>, is a technology
 	  that can be used to achieve these goals.
         </t>
   
   	<t>
-	The CONEX congestion exposure mechanism is designed to be a
+	The ConEx congestion exposure mechanism is designed to be a
 	general technology that could be applied as a key element of
 	congestion management solutions for a variety of use cases. The
 	IETF CONEX WG decided to initially start to work on a specific use case,
 	where the end hosts and the network that contains the
-	destination end hosts are CONEX-enabled but other networks need
+	destination end hosts are ConEx-enabled but other networks need
 	not be.
       </t>
 
@@ -302,8 +302,8 @@
 	communication network such as a 3GPP Evolved Packet System
 	(EPS) network, where UEs (User Equipment, i.e. mobile end
 	hosts), servers and caches, the access network and possibly
-	an operator's core network can be CONEX-enabled. I.e., hosts
-	support the CONEX mechanisms, and the network provides
+	an operator's core network can be ConEx-enabled. I.e., hosts
+	support the ConEx mechanisms, and the network provides
 	policing/auditing functions at its edges.
       </t>
 
@@ -314,7 +314,7 @@
 	can benefit from congestion exposure concepts 
 	and how they should be applied.
 	Using this use case as a basis, a set of requirements for
-	CONEX mechanisms are described.
+	ConEx mechanisms are described.
       </t>
 
     </section>
@@ -322,7 +322,7 @@
 
 
 
-    <section title="CONEX Use Cases in Mobile Communication Networks" anchor="sec.use-cases">
+    <section title="ConEx Use Cases in Mobile Communication Networks" anchor="sec.use-cases">
       <t>
 	In general, quality of service and good network resource
 	utilization are important requirements for mobile
@@ -331,12 +331,17 @@
 	radio resource) demand is difficult to predict precisely due
 	to user mobility, radio propagation effects etc. Hence today's
 	architectures and protocols go to significant extent in order
-	to provide network-controlled quality of service -- for
+	to provide network-controlled quality of service. These 
+	efforts often lead to complexity and cost. ConEx could be 
+	simpler approach to efficient resource sharing in these
+	networks. 
+
+ 	<!-- taken out for version 4: for
 	instance by 3GPP's EPS bearer model that enables the network
 	to allocate service data flows (SDFs) to certain EPS bearers
 	with specific quality of service classes (which can be used
-	for fine-granular <!-- per-application--> service
-	differentiation).
+	for fine-granular service
+	differentiation). -->
       </t>
       <t>
 	In the following, we discuss ways how congestion exposure
@@ -345,10 +350,12 @@
 	describes fundamental congestion exposure concepts and a set
 	of use cases for applying congestion exposure mechanisms to
 	realize different traffic management functions such as flow
-	policy-based traffic management or traffic offloading.
+	policy-based traffic management or traffic offloading. Readers
+	that are not familiar with the 3GPP Evolved Packet System (EPS)
+	should refer to <xref target="appendix1"/> first.
       </t>
 
-      <section title="CONEX as a Basis for Traffic Management">
+      <section title="ConEx as a Basis for Traffic Management">
 	<t>
 	  Traffic management is a very important function in mobile
 	  communication networks. Since wireless resources are
@@ -356,19 +363,21 @@
 	  bandwidth in the wireless access create certain dynamics
 	  with respect to available bandwidth, commercially operated
 	  mobile networks provide mechanisms for tight resource
-	  management (admission control for bearer establishment) --
-	  however sometimes these mechanisms are not easily applicable
+	  management (admission control for bearer establishment).
+	  However, sometimes these mechanisms are not easily applicable
 	  to IP- and HTTP-dominated traffic mixes, for example, most
 	  Internet traffic in todays mobile network is transmitted
 	  over the (best-effort) default bearer.
 	</t>
+
+<!-- too detailed here:
 	<t>
 	  In the EPS, the QoS requirements for different services
 	  running on a UE are supported by a bearer concept which is
 	  managed by the network. Each bearer has an associated QoS
 	  Class Identifier (QCI) and an Allocation and Retention
 	  Policy (ARP) that has been standardized for uniform traffic
-	  handling (across implementations) -- operators can define
+	  handling (across implementations). Operators can define
 	  private QCIs in addition to that. For the necessary QoS
 	  across the mobile network, an EPS bearer is maintained that
 	  crosses different interfaces in the network and maps to
@@ -383,11 +392,16 @@
 	  can be assigned different priorities. Packets mapped to the
 	  same EPS bearer (and priority) receive the same bearer-level
 	  packet forwarding treatment.
-	</t>
+	</t> -->
+	
 	<t>
-	  In the light of the significant increase of overall data
-	  volume in 3G networks, Deep-Packet-Inspection (DPI) is often
-	  considered a desirable function to have in the EPC -- on,
+	  Given the above, and in the light of the significant increase 
+	  of overall data volume in 3G networks, Deep-Packet-Inspection 
+	  (DPI) is often considered a desirable function to have in the EPC
+	  -- despite its cost and complexity. With the increase of 
+	  encrypted data traffic, traffic management using DPI alone
+	  however will become even more challenging.  
+<!-- on,
 	  for example, a PDN (Packet Data Network) gateway, and some
 	  operators do in fact deploy DPI today. The Policy and
 	  Charging Control (PCC) architecture <xref
@@ -396,7 +410,7 @@
 	  reporting of detected applications and its service data flow
 	  description to the Policy Control and Charging Rules
 	  Function (PCRF) for performing functions such as traffic
-	  blocking, redirection or policing for selected flows.
+	  blocking, redirection or policing for selected flows.-->
 	</t>
 	<t>
 	  Congestion exposure can be employed to address resource
@@ -436,7 +450,7 @@
 	      type identification required, no static configuration of
 	      application classes) and perform better as decisions can
 	      be taken based on real-time actual cost contribution.
-	      With CONEX, accurate downstream path
+	      With ConEx, accurate downstream path
 	      information would be visible to ingress network
 	      operators, which can respond to incipient congestion in
 	      time. This can be equivalent to offering different
@@ -474,29 +488,34 @@
 	      application) to a different radio access, while keeping
 	      all other ongoing connections untouched. The decision on
 	      when and which IP flows move is typically based on
-	      static configured rules, whereas the use of CONEX
+	      statically configured rules, whereas the use of ConEx
 	      mechanisms could also factor in real-time congestion
-	      information in the decision.
+	      information into the decision.
 	    </t>
 	  </list>
 	</t>
 
 	<t>
-	  In summary, it can be said that traffic management in 3GPP
+	  In summary, it can be said that traffic management in the 3GPP
 	  EPS and other mobile communication architectures is very
 	  important. Currently, more static approaches based on
 	  admission control and static QoS are in use, but recently,
 	  there has been a perceived need for more dynamic mechanisms
-	  based on DPI. Introducing CONEX could make these mechanisms
+	  based on DPI. Introducing ConEx could make these mechanisms
 	  more efficient or even remove the need for some of the DPI
-	  functions deployed today. Adding CONEX support however might
-	  require <!-- slight --> changes to the PCC architecture,
-	  depending on the scope and impact of a CONEX-based traffic
-	  management approach.
+	  functions deployed today. 
+
+<!--
+Mention this when we talk about how ConEx could work in the EPS:
+
+Adding ConEx support however might
+	  require slight changes to the PCC architecture,
+	  depending on the scope and impact of a ConEx-based traffic
+	  management approach. -->
 	</t>
     </section>
 
-    <section title="CONEX to Incentivize Scavenger Transports">
+    <section title="ConEx to Incentivize Scavenger Transports">
       <t>
 	As 3G and LTE networks are turning into universal access
 	networks that are shared between mobile (smart) phone users,
@@ -515,7 +534,7 @@
 	like e.g. LEDBAT <xref target="RFC6817"/> were used, it would
   improve the overall utility of the network. The use of these
   transports by the end user however needs to be incentivized.
-	CONEX could be used to build an incentive scheme e.g. by
+	ConEx could be used to build an incentive scheme e.g. by
 	allowing users that contribute less to congestion to give them
 	a larger bandwidth allowance or e.g. to lower the next monthly
 	subscription fee. In principle, this would
@@ -578,39 +597,39 @@
 
     <section title="Partial vs. Full Deployment">
       <t>
-	In general, CONEX lends itself to partial deployment as the
+	In general, ConEx lends itself to partial deployment as the
 	mechanism does not require all routers and hosts to support
 	congestion exposure. Moreover, assuming a policing
 	infrastructure has been put in place, it is not required to
-	modify all hosts. Since CONEX is about senders exposing
+	modify all hosts. Since ConEx is about senders exposing
 	congestion contribution to the network, senders need to be
-	made CONEX-aware (assuming a congestion notification
+	made ConEx-aware (assuming a congestion notification
 	mechanisms such as ECN is in place).
       </t>
       <t>
 	<xref target="I-D.briscoe-conex-initial-deploy"/> provides
-	specific examples of how CONEX deployment can be initiated,
-	focusing unilaterial deployment by single networks, i.e., by
+	specific examples of how ConEx deployments can be initiated,
+	focusing on unilaterial deployments by single networks, i.e.,
 	partial deployment.
       </t>
       <t>
 	In mobile communication networks that would for example allow
-	early partial CONEX deployment in the downlink direction only,
-	i.e., servers, gateways and caches would support CONEX but UEs
+	early partial ConEx deployment in the downlink direction only,
+	i.e., servers, gateways and caches would support ConEx but UEs
 	(mobile hosts) would not.
       </t>
       <t>
 	When moving towards full deployment in a specific operator's
-	network, different ways for introducing CONEX support on UEs
+	network, different ways for introducing ConEx support on UEs
 	are feasible. Since mobile communication networks are
-	multi-vendor networks, standardizing CONEX support on UEs
+	multi-vendor networks, standardizing ConEx support on UEs
 	(e.g., in 3GPP specifications) appears useful. Still, not all
-	UEs would have to support CONEX, and operators would be free
+	UEs would have to support ConEx, and operators would be free
 	to choose their policing approach in such deployment
 	scenarios. Leveraging existing PCC architectures, 3GPP network
 	operators could for example decide policing/accounting
 	approaches per UE -- i.e., apply fixed volume caps for
-	non-CONEX UEs and more flexible schemes for CONEX-enabled UEs.
+	non-ConEx UEs and more flexible schemes for ConEx-enabled UEs.
       </t>
 
       <!-- <t> -->
@@ -626,17 +645,17 @@
 
 
       <t>
-	Moreover, it should be noted that network support for CONEX is
+	Moreover, it should be noted that network support for ConEx is
 	a feature that some operators may choose to deploy if they
 	wish, but it is not required that all operators (or all other
 	networks) do so.
       </t>
       
       <t>
-	Depending on the extent of CONEX support, specific aspects
+	Depending on the extent of ConEx support, specific aspects
 	such as roaming have to be taken into account. I.e., what
-	happens when a user is roaming in a CONEX-enabled network, but
-	their UE is not CONEX-enabled and vice versa. Although these
+	happens when a user is roaming in a ConEx-enabled network, but
+	their UE is not ConEx-enabled and vice versa. Although these
 	may not be fundamental problems, they need to be
 	considered. For supporting mobility in general, it can be
 	required to shift users' policing state during
@@ -651,7 +670,7 @@
 	<xref target="3GPP.23.829"/>, i.e., the idea that some traffic
 	(e.g., high-volume Internet traffic) is actually not passed
 	through the EPC but is offloaded at a "break-out point" closer
-	to (or in) the access network. On the other hand, CONEX can
+	to (or in) the access network. On the other hand, ConEx can
 	also enable more dynamic decisions on what traffic to actually
 	offload by considering congestion exposure in bulk traffic
 	aggregates -- thus making traffic offload more effective.
@@ -666,7 +685,7 @@
       <t>
 	In summary, the 3GPP EPS is a system architecture that can
 	benefit from congestion exposure in multiple ways, as we have
-	shown by this brief description of CONEX use cases in this
+	shown by this brief description of ConEx use cases in this
 	environment. Dynamic traffic and congestion management is an
 	acknowledged and important requirement for the EPS, also
 	illustrated by the current DPI-related work for EPS.
@@ -674,8 +693,8 @@
       <t>
 	Moreover, networks such as an EPS mobile
 	communication network would be quite amenable for deploying
-	CONEX as a mechanism, since they represent clearly defined and
-	well separated operational domains, in which local CONEX
+	ConEx as a mechanism, since they represent clearly defined and
+	well separated operational domains, in which local ConEx
 	deployment would be possible. Aside from roaming (which needs
 	to be considered for a specific solution), such a deployment
 	is fully under the control of a single operator, which can
@@ -1513,7 +1532,7 @@ Do we refer here just to, for example, UTRAN and E-UTRAN co-existance or also to
 </section>
 
 
-    <section title="Overview of 3GPP's Evolved Packet System (EPS)">
+    <section anchor="appendix1" title="Overview of 3GPP's Evolved Packet System (EPS)">
 
       <t>
 	This section provides an overview of 3GPP's "Evolved Packet
