@@ -5,41 +5,37 @@
      An alternate method (rfc include) is described in the references. -->
 
 
-<!ENTITY RFC2119 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
-<!ENTITY RFC5050 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5050.xml">
-<!ENTITY RFC4838 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4838.xml">
-<!ENTITY RFC2629 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2629.xml">
-<!ENTITY RFC3552 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3552.xml">
-<!ENTITY RFC6040 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6040.xml">
-<!ENTITY RFC6789 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6789.xml">
-<!ENTITY RFC6817 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6817.xml">
+<!ENTITY RFC2629 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2629.xml">
+<!ENTITY RFC6040 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6040.xml">
+<!ENTITY RFC6789 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6789.xml">
+<!ENTITY RFC6817 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6817.xml">
 
 
-<!ENTITY I-D.narten-iana-considerations-rfc2434bis SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.narten-iana-considerations-rfc2434bis.xml">
+<!ENTITY I-D.narten-iana-considerations-rfc2434bis SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.narten-iana-considerations-rfc2434bis.xml">
 
 
-<!ENTITY I-D.draft-ietf-conex-abstract-mech SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-ietf-conex-abstract-mech-08.xml">
+<!ENTITY I-D.draft-ietf-conex-abstract-mech SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-conex-abstract-mech-08.xml">
 
-<!ENTITY I-D.draft-ietf-conex-destopt SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-ietf-conex-destopt-05.xml">
+<!ENTITY I-D.draft-ietf-conex-destopt SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-conex-destopt-05.xml">
 
 
-<!ENTITY I-D.draft-briscoe-tsvwg-ecn-encap-guidelines SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-briscoe-tsvwg-ecn-encap-guidelines-03.xml">
+<!ENTITY I-D.draft-briscoe-tsvwg-ecn-encap-guidelines SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.draft-briscoe-tsvwg-ecn-encap-guidelines-03.xml">
 
-<!ENTITY I-D.draft-briscoe-conex-initial-deploy SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-briscoe-conex-initial-deploy-03.xml">
+<!ENTITY I-D.draft-briscoe-conex-initial-deploy SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.draft-briscoe-conex-initial-deploy-03.xml">
 
 
 
 
 
-<!ENTITY ts23203 SYSTEM "http://xml.resource.org/public/rfc/bibxml5/reference.3GPP.23.203.xml">
-<!ENTITY ts36300 SYSTEM "http://xml.resource.org/public/rfc/bibxml5/reference.3GPP.36.300.xml">
-<!ENTITY ts29060 SYSTEM "http://xml.resource.org/public/rfc/bibxml5/reference.3GPP.29.060.xml">
-<!ENTITY ts29274 SYSTEM "http://xml.resource.org/public/rfc/bibxml5/reference.3GPP.29.274.xml">
-<!ENTITY ts23401 SYSTEM "http://xml.resource.org/public/rfc/bibxml5/reference.3GPP.23.401.xml">
-<!ENTITY ts23402 SYSTEM "http://xml.resource.org/public/rfc/bibxml5/reference.3GPP.23.402.xml">
-<!ENTITY tr23829 SYSTEM "http://xml.resource.org/public/rfc/bibxml5/reference.3GPP.23.829.xml">
-<!ENTITY ts26114 SYSTEM "http://xml.resource.org/public/rfc/bibxml5/reference.3GPP.26.114.xml">
-<!ENTITY tr23705 SYSTEM "http://xml.resource.org/public/rfc/bibxml5/reference.3GPP.23.705.xml">
+<!ENTITY ts23203 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml5/reference.3GPP.23.203.xml">
+<!ENTITY ts36300 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml5/reference.3GPP.36.300.xml">
+<!ENTITY ts29060 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml5/reference.3GPP.29.060.xml">
+<!ENTITY ts29274 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml5/reference.3GPP.29.274.xml">
+<!ENTITY ts23401 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml5/reference.3GPP.23.401.xml">
+<!ENTITY ts23402 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml5/reference.3GPP.23.402.xml">
+<!ENTITY tr23829 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml5/reference.3GPP.23.829.xml">
+<!ENTITY ts26114 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml5/reference.3GPP.26.114.xml">
+<!ENTITY tr23705 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml5/reference.3GPP.23.705.xml">
 
 
 
@@ -81,7 +77,7 @@
 
 
 
-<rfc category="info" ipr="trust200902" docName="draft-ietf-conex-mobile-03">
+<rfc category="info" ipr="trust200902" docName="draft-ietf-conex-mobile-04">
   <!-- category values: std, bcp, info, exp, and historic
      ipr values: full3667, noModification3667, noDerivatives3667
      you can add the attributes updates="NNNN" and obsoletes="NNNN" 
