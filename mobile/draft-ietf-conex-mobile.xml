@@ -1656,6 +1656,8 @@ VPLMN                         |              |
 	  <list style="symbols">
 	    <t>added conex lite to deployment scenarios</t>
 	    <t>added reference to LTE study paper at SIGCOMM-2013"</t>
+	    <t>restructured section 2 and 3 (moved 3GPP specifics out of section2</t>
+	    <t>added normative references section and put RFC6789 there</t>
 	    <t>updated references</t>
 	  </list>
 	</t>
