@@ -327,14 +327,14 @@
 	In general, quality of service and good network resource
 	utilization are important requirements for mobile
 	communication network operators. Radio access and backhaul
-	networks are considered scarce resources, and bandwidth (and
+	capacity are considered scarce resources, and bandwidth (and
 	radio resource) demand is difficult to predict precisely due
 	to user mobility, radio propagation effects etc. Hence today's
 	architectures and protocols go to significant extent in order
 	to provide network-controlled quality of service. These 
 	efforts often lead to complexity and cost. ConEx could be 
-	simpler approach to efficient resource sharing in these
-	networks. 
+	simpler and more capable approach to efficient resource sharing 
+	in these networks. 
 
  	<!-- taken out for version 4: for
 	instance by 3GPP's EPS bearer model that enables the network
@@ -366,7 +366,7 @@
 	  management (admission control for bearer establishment).
 	  However, sometimes these mechanisms are not easily applicable
 	  to IP- and HTTP-dominated traffic mixes, for example, most
-	  Internet traffic in todays mobile network is transmitted
+	  Internet traffic in today's mobile network is transmitted
 	  over the (best-effort) default bearer.
 	</t>
 
@@ -434,7 +434,7 @@
 	      can optimize network utilization more accurately and
 	      dynamically. By using ConEx congestion contribution as a
 	      metric, such policers would not need to be aware of
-	      specific link load (e.g., in wireless base stations) or
+	      specific link loads (e.g., in wireless base stations) or
 	      flow application types.
 	    </t>
 	    <t>
@@ -612,12 +612,12 @@ Adding ConEx support however might
 	focusing on unilaterial deployments by single networks, i.e.,
 	partial deployment.
       </t>
-      <t>
+      <!-- what are we trying to say here? <t>
 	In mobile communication networks that would for example allow
 	early partial ConEx deployment in the downlink direction only,
 	i.e., servers, gateways and caches would support ConEx but UEs
 	(mobile hosts) would not.
-      </t>
+      </t>-->
       <t>
 	When moving towards full deployment in a specific operator's
 	network, different ways for introducing ConEx support on UEs
@@ -684,9 +684,9 @@ Adding ConEx support however might
     <section title="Summary">
       <t>
 	In summary, the 3GPP EPS is a system architecture that can
-	benefit from congestion exposure in multiple ways, as we have
+	benefit from congestion exposure in multiple ways<!--, as we have
 	shown by this brief description of ConEx use cases in this
-	environment. Dynamic traffic and congestion management is an
+	environment-->. Dynamic traffic and congestion management is an
 	acknowledged and important requirement for the EPS, also
 	illustrated by the current DPI-related work for EPS.
       </t>
