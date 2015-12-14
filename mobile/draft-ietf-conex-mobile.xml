@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="US-ASCII"?>
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
-<!-- One method to get references from the online citation libraries.
-     There has to be one entity for each item to be referenced. 
-     An alternate method (rfc include) is described in the references. -->
-
 
 <!ENTITY RFC2629 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2629.xml">
 <!ENTITY RFC6040 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6040.xml">
@@ -14,17 +10,11 @@
 <!ENTITY I-D.narten-iana-considerations-rfc2434bis SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.narten-iana-considerations-rfc2434bis.xml">
 
 
-<!ENTITY I-D.draft-ietf-conex-abstract-mech SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-conex-abstract-mech-08.xml">
+<!ENTITY I-D.draft-ietf-conex-abstract-mech SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-conex-abstract-mech-13.xml">
 
-<!ENTITY I-D.draft-ietf-conex-destopt SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-conex-destopt-05.xml">
+<!ENTITY I-D.draft-ietf-conex-destopt SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-conex-destopt-11.xml">
 
-
-<!ENTITY I-D.draft-briscoe-tsvwg-ecn-encap-guidelines SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.draft-briscoe-tsvwg-ecn-encap-guidelines-03.xml">
-
-<!ENTITY I-D.draft-briscoe-conex-initial-deploy SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.draft-briscoe-conex-initial-deploy-03.xml">
-
-
-
+<!ENTITY I-D.draft-ietf-conex-tcp-modifications SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-conex-tcp-modifications-10.xml">
 
 
 <!ENTITY ts23203 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml5/reference.3GPP.23.203.xml">
@@ -47,53 +37,21 @@
 
 <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
 
-<!-- used by XSLT processors -->
-<!-- For a complete list and description of processing instructions (PIs), 
-     please see http://xml.resource.org/authoring/README.html. -->
-<!-- Below are generally applicable Processing Instructions (PIs) that most I-Ds might want to use.
-     (Here they are set differently than their defaults in xml2rfc v1.32) -->
 
 <?rfc strict="no" ?>
-<!-- give errors regarding ID-nits and DTD validation -->
-<!-- control the table of contents (ToC) -->
 <?rfc toc="yes"?>
-<!-- generate a ToC -->
 <?rfc tocdepth="4"?>
-<!-- the number of levels of subsections in ToC. default: 3 -->
-<!-- control references -->
 <?rfc symrefs="yes"?>
-<!-- use symbolic references tags, i.e, [RFC2119] instead of [1] -->
 <?rfc sortrefs="yes" ?>
-<!-- sort the reference entries alphabetically -->
-<!-- control vertical white space 
-     (using these PIs as follows is recommended by the RFC Editor) -->
 <?rfc compact="yes" ?>
-<!-- do not start each main section on a new page -->
 <?rfc subcompact="no" ?>
 
 
-<!-- keep one blank line between list items -->
-<!-- end of list of popular I-D processing instructions -->
-
-
-
-<rfc category="info" ipr="trust200902" docName="draft-ietf-conex-mobile-04">
-  <!-- category values: std, bcp, info, exp, and historic
-     ipr values: full3667, noModification3667, noDerivatives3667
-     you can add the attributes updates="NNNN" and obsoletes="NNNN" 
-     they will automatically be output with "(if approved)" -->
-
+<rfc category="info" ipr="trust200902" docName="draft-ietf-conex-mobile-06">
   <!-- ***** FRONT MATTER ***** -->
 
   <front>
-    <!-- The abbreviated title is used in the page header - it is only necessary if the 
-         full title is longer than 39 characters -->
-
     <title abbrev="ConEx Mobile Scenario">Mobile Communication Congestion Exposure Scenario</title>
-
-    <!-- add 'role="editor"' below for the editors if appropriate -->
-
-    <!-- Another author who claims to be an editor -->
 
 
     <author fullname="Dirk Kutscher" initials="D." 
@@ -102,7 +60,6 @@
       <address>
         <postal>
           <street>Kurfuersten-Anlage 36</street>
-          <!-- Reorder these if your country does things differently -->
           <city>Heidelberg</city>
           <region></region>
           <code></code>
@@ -110,7 +67,6 @@
         </postal>
         <phone></phone>
         <email>kutscher@neclab.eu</email>
-        <!-- uri and facsimile elements may also be added -->
       </address>
     </author>
 
@@ -120,7 +76,6 @@
       <address>
         <postal>
           <street>Kurfuersten-Anlage 36</street>
-          <!-- Reorder these if your country does things differently -->
           <city>Heidelberg</city>
           <region></region>
           <code></code>
@@ -128,7 +83,6 @@
         </postal>
         <phone></phone>
         <email>faisal.mir@neclab.eu</email>
-        <!-- uri and facsimile elements may also be added -->
       </address>
     </author>
 
@@ -139,7 +93,6 @@
       <address>
         <postal>
           <street>Kurfuersten-Anlage 36</street>
-          <!-- Reorder these if your country does things differently -->
           <city>Heidelberg</city>
           <region></region>
           <code></code>
@@ -147,7 +100,6 @@
         </postal>
         <phone></phone>
         <email>rolf.winter@neclab.eu</email>
-        <!-- uri and facsimile elements may also be added -->
       </address>
     </author>
 
@@ -158,7 +110,6 @@
       <address>
         <postal>
           <street>8400 Blvd Decarie</street>
-          <!-- Reorder these if your country does things differently -->
           <city>Town of Mount Royal</city>
           <region>Quebec</region>
           <code></code>
@@ -166,24 +117,23 @@
         </postal>
         <phone></phone>
         <email>suresh.krishnan@ericsson.com</email>
-        <!-- uri and facsimile elements may also be added -->
       </address>
     </author>
 
 
     <author fullname="Ying Zhang" initials="Y." 
             surname="Zhang">
-      <organization>Ericsson</organization>
+      <organization>Hewlett Packard Labs</organization>
       <address>
         <postal>
-          <street>200 Holger Way</street>
-          <city>San Jose</city>
+          <street>3000 Hannover Street</street>
+          <city>Palo Alto</city>
           <region>CA</region>
-          <code>95134</code>
+          <code>94304</code>
           <country>USA</country>
         </postal>
         <phone></phone>
-        <email>ying.zhang@ericsson.com</email>
+        <email>ying.zhang13@hp.com</email>
 
       </address>
     </author>
@@ -209,41 +159,24 @@
 
     <date/>
 
-    <!-- If the month and year are both specified and are the current ones, xml2rfc will fill 
-         in the current day for you. If only the current year is specified, xml2rfc will fill 
-	 in the current day and month for you. If the year is not the current one, it is 
-	 necessary to specify at least a month (xml2rfc assumes day="1" if not specified for the 
-	 purpose of calculating the expiry date).  With drafts it is normally sufficient to 
-	 specify just the year. -->
-
-    <!-- Meta-data Declarations -->
 
     <area>IETF</area>
 
     <workgroup>CONEX WG</workgroup>
 
-    <!-- WG name at the upperleft corner of the doc,
-         IETF is fine for individual submissions.  
-	 If this element is not present, the default is "Network Working Group",
-         which is used by the RFC Editor as a nod to the history of the IETF. -->
-
     <keyword>congestion exposure</keyword> 
     <keyword>mobile communications</keyword>
-
-    <!-- Keywords will be incorporated into HTML output
-         files in a meta tag but they have no effect on text or nroff
-         output. If you submit your draft to the RFC Editor, the
-         keywords will be used for the search engine. -->
 
     <abstract>
       <t>
 	This memo describes a mobile communications use case for
-	congestion exposure (ConEx) with a particular focus on those mobile
-	communication networks that are architecturally similar to the 3GPP Evolved Packet System
-	(EPS). The draft provides a brief overview of the architecture
-	of these networks (both access and core networks), current QoS
-	mechanisms and then discusses how congestion exposure concepts
-	could be applied. Based on this, this memo suggests a set of
+	congestion exposure (ConEx) with a particular focus on those
+	mobile communication networks that are architecturally similar
+	to the 3GPP Evolved Packet System (EPS). The draft provides a
+	brief overview of the architecture of these networks (both
+	access and core networks), current QoS mechanisms and then
+	discusses how congestion exposure concepts could be
+	applied. Based on this, this memo suggests a set of
 	requirements for ConEx mechanisms that particularly apply to
 	these mobile networks.
       </t>
@@ -253,14 +186,6 @@
   <middle>
     <section title="Introduction">
 
-<!--
-      <t>
-	The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
-	NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and
-	"OPTIONAL" in this document are to be interpreted as described
-	in <xref target="RFC2119">RFC 2119</xref>.
-      </t>
--->
       <t>
 	Mobile data traffic continues to grow rapidly. The challenge
 	wireless operators face is to support more subscribers with
@@ -290,11 +215,11 @@
   	<t>
 	The ConEx congestion exposure mechanism is designed to be a
 	general technology that could be applied as a key element of
-	congestion management solutions for a variety of use cases. The
-	IETF CONEX WG decided to initially start to work on a specific use case,
-	where the end hosts and the network that contains the
-	destination end hosts are ConEx-enabled but other networks need
-	not be.
+	congestion management solutions for a variety of use cases. In
+	particular, uses cases, where the end hosts and the network
+	that contains the destination end hosts are ConEx-enabled but
+	other networks need not be, are of interest for initial
+	deployment.
       </t>
 
       <t>
@@ -317,6 +242,20 @@
 	ConEx mechanisms are described.
       </t>
 
+      <section title="Acronyms">
+	<t>
+	  In the following we expand some acronyms that are used in
+	  throughout the text. Most of them are explained and put in a
+	  system context in <xref target="appendix1"/> and the 3GPP
+	  specifications referenced there.
+	  <list style="hanging">
+	    <t hangText="eNB:"><vspace/>Evolved NodeB: LTE base station</t>
+	    <t hangText="S-GW:"><vspace/>Serving Gateway: mobility anchor and tunnel endpoint</t>
+	    <t hangText="P-GW:"><vspace/>Packet Data Network (PDN) Gateway: tunnel endpoint for user and control plane protocol -- typically the GW to the Internet or an operator's service network</t>
+	    <t hangText="UE:"><vspace/>User Equipment: mobile terminals</t>
+	  </list>
+	</t>
+      </section>
     </section>
 
 
@@ -332,16 +271,10 @@
 	to user mobility, radio propagation effects etc. Hence today's
 	architectures and protocols go to significant extent in order
 	to provide network-controlled quality of service. These 
-	efforts often lead to complexity and cost. ConEx could be 
+	efforts often lead to complexity and cost. ConEx could be a
 	simpler and more capable approach to efficient resource sharing 
 	in these networks. 
 
- 	<!-- taken out for version 4: for
-	instance by 3GPP's EPS bearer model that enables the network
-	to allocate service data flows (SDFs) to certain EPS bearers
-	with specific quality of service classes (which can be used
-	for fine-granular service
-	differentiation). -->
       </t>
       <t>
 	In the following, we discuss ways how congestion exposure
@@ -370,29 +303,6 @@
 	  over the (best-effort) default bearer.
 	</t>
 
-<!-- too detailed here:
-	<t>
-	  In the EPS, the QoS requirements for different services
-	  running on a UE are supported by a bearer concept which is
-	  managed by the network. Each bearer has an associated QoS
-	  Class Identifier (QCI) and an Allocation and Retention
-	  Policy (ARP) that has been standardized for uniform traffic
-	  handling (across implementations). Operators can define
-	  private QCIs in addition to that. For the necessary QoS
-	  across the mobile network, an EPS bearer is maintained that
-	  crosses different interfaces in the network and maps to
-	  lower layer bearers for packet forwarding. A radio bearer
-	  transports traffic between a UE and eNB whereas an S1 bearer
-	  transports traffic between the eNB and S-GW and an S5/S8
-	  bearer between the S-GW and P-GW. Primarily LTE offers two
-	  types of bearer: a guaranteed bit rate bearer for real-time
-	  communication, e.g., voice calls and a non-guaranteed bit
-	  rate bearer for best effort traffic for Internet access
-	  etc. In addition, different non-guaranteed bit rater bearers
-	  can be assigned different priorities. Packets mapped to the
-	  same EPS bearer (and priority) receive the same bearer-level
-	  packet forwarding treatment.
-	</t> -->
 	
 	<t>
 	  Given the above, and in the light of the significant increase 
@@ -401,16 +311,6 @@
 	  -- despite its cost and complexity. With the increase of 
 	  encrypted data traffic, traffic management using DPI alone
 	  however will become even more challenging.  
-<!-- on,
-	  for example, a PDN (Packet Data Network) gateway, and some
-	  operators do in fact deploy DPI today. The Policy and
-	  Charging Control (PCC) architecture <xref
-	  target="3GPP.23.203"/> provides a "Traffic Detection
-	  Function" (TDF) that performs application detection and
-	  reporting of detected applications and its service data flow
-	  description to the Policy Control and Charging Rules
-	  Function (PCRF) for performing functions such as traffic
-	  blocking, redirection or policing for selected flows.-->
 	</t>
 	<t>
 	  Congestion exposure can be employed to address resource
@@ -440,7 +340,7 @@
 	    <t>
 	      It can reduce the need for complex DPI by allowing for a
 	      bulk packet traffic management system that does not have
-	      to consider the application classes flows belong to and
+	      to consider the application classes of flows and
 	      individual sessions. Instead, traffic management would
 	      be based on the current cost (contribution to
 	      congestion) incurred by different flows and enable
@@ -505,13 +405,6 @@
 	  more efficient or even remove the need for some of the DPI
 	  functions deployed today. 
 
-<!--
-Mention this when we talk about how ConEx could work in the EPS:
-
-Adding ConEx support however might
-	  require slight changes to the PCC architecture,
-	  depending on the scope and impact of a ConEx-based traffic
-	  management approach. -->
 	</t>
     </section>
 
@@ -529,7 +422,7 @@ Adding ConEx support however might
 	traffic, without differentiating for example periodic OS
 	updates, application store downloads from web (browser)-based
 	or other more real-time communication. For many of the bulk data
-	transfers, completion times aren't important within certain bounds
+	transfers, completion times are not important within certain bounds
 	and therefore if scavenger (or less-than best effort) transports
 	like e.g. LEDBAT <xref target="RFC6817"/> were used, it would
   improve the overall utility of the network. The use of these
@@ -546,15 +439,15 @@ Adding ConEx support however might
       <t>
 	3G and LTE networks provide extensive support for accounting
 	and charging already, for example cf. the Policy Charging
-	Control (PCC) architecture. In fact, most operators today
-	account transmitted data volume on a very fine granular basis
-	and either correlate monthly charging to the exact number of
-	packets/bytes transmitted, or employ some form of flat rate
-	(or flexible flat rate), often with a so-called fair-use
-	policy. With such policies, users are typically limited to an
-	administratively configured maximum bandwidth limit, after
-	they have used up their contractual data volume budget for the
-	charging period.
+	Control (PCC) architecture <xref target="3GPP.23.203"/>. In
+	fact, most operators today account transmitted data volume on
+	a very fine granular basis and either correlate monthly
+	charging to the exact number of packets/bytes transmitted, or
+	employ some form of flat rate (or flexible flat rate), often
+	with a so-called fair-use policy. With such policies, users
+	are typically limited to an administratively configured
+	maximum bandwidth limit, after they have used up their
+	contractual data volume budget for the charging period.
       </t>
       <t>
 	Changing this data volume-based accounting to a
@@ -563,27 +456,17 @@ Adding ConEx support however might
 	accounting system available. Also, an operator-provided mobile
 	communication network can be seen as a network domain within
 	such congestion volume accounting would be possible, without
-	requiring any support from the global Internet, in particular since the
-	typical scare resources such as the wireless access and the mobile backhaul
-	are all within this domain. Traffic
+	requiring any support from the global Internet, in particular
+	since the typical scarce resources such as the wireless access
+	and the mobile backhaul are all within this domain. Traffic
 	normally leaves/enters the operator's network via well-defined
 	egress/ingress points that would be ideal candidates for
 	policing functions. Moreover, in most commercially operated
 	networks, accounting is performed for both received and sent
 	data, which would facilitate congestion volume accounting as
 	well.
-	<!--
-	    For a more detailed discussion, please see (FIXME: the
-	section where we talk about the mapping of functions).
-	-->
       </t>
 
-<!--
-      <t>
-	TODO: here we could say something about CONEX leveraging PCC
-	(and/or enhancing it).
-      </t>
--->
       <t>
 	With respect to the current PCC framework, accounting for
 	congestion volume could be added as another feature to the
@@ -607,18 +490,6 @@ Adding ConEx support however might
 	mechanisms such as ECN is in place).
       </t>
       <t>
-	<xref target="I-D.briscoe-conex-initial-deploy"/> provides
-	specific examples of how ConEx deployments can be initiated,
-	focusing on unilaterial deployments by single networks, i.e.,
-	partial deployment.
-      </t>
-      <!-- what are we trying to say here? <t>
-	In mobile communication networks that would for example allow
-	early partial ConEx deployment in the downlink direction only,
-	i.e., servers, gateways and caches would support ConEx but UEs
-	(mobile hosts) would not.
-      </t>-->
-      <t>
 	When moving towards full deployment in a specific operator's
 	network, different ways for introducing ConEx support on UEs
 	are feasible. Since mobile communication networks are
@@ -631,18 +502,6 @@ Adding ConEx support however might
 	approaches per UE -- i.e., apply fixed volume caps for
 	non-ConEx UEs and more flexible schemes for ConEx-enabled UEs.
       </t>
-
-      <!-- <t> -->
-      <!-- 	A 3GPP mobile communication network can be seen as separate -->
-      <!-- 	network domain that would enable the introduction of CONEX -->
-      <!-- 	through a careful standardization of interfaces and behavior -->
-      <!-- 	of its system elements. While it can be possible to deploy -->
-      <!-- 	CONEX in a single operator's network only, it may in fact not -->
-      <!-- 	be practical, since support on mobile nodes (UEs) may be -->
-      <!-- 	required to actually implement the host end transport -->
-      <!-- 	mechanisms. -->
-      <!-- </t> -->
-
 
       <t>
 	Moreover, it should be noted that network support for ConEx is
@@ -675,11 +534,6 @@ Adding ConEx support however might
 	offload by considering congestion exposure in bulk traffic
 	aggregates -- thus making traffic offload more effective.
       </t>
-<!--
-      <t>
-	[[Dirk: also: more needed]
-      </t>
--->
     </section>
     <section title="Summary">
       <t>
@@ -714,45 +568,45 @@ Adding ConEx support however might
   </section>
 
   
-  <section title="CONEX in the EPS">
+  <section title="ConEx in the EPS">
     <t>
-      At the time of writing, the CONEX mechanism is still work in progress in the IETF
-      working group. Still, discussing a few options for
-      how such a mechanism (and possibly additional policing
-      functions) could eventually be deployed in 3GPP's EPS is useful at this point. Note that
-      this description of options is not intended as a complete set of
-      possible approaches -- it is merely intended for discussing the most promising options.
+      In this section, we are discussing a few options for how such a
+      mechanism (and possibly additional policing functions) could
+      eventually be deployed in 3GPP's EPS.  Note that this
+      description of options is not intended as a complete set of
+      possible approaches -- it is merely intended for discussing the
+      most promising options.
       </t>
 
       <section title="Possible Deployment Scenarios" anchor="sec.deployment-scenarios">
 	<t>
-	  There are different possible ways how CONEX functions on
-	  hosts and network elements can be used. For example, CONEX
+	  There are different possible ways how ConEx functions on
+	  hosts and network elements can be used. For example, ConEx
 	  could be used for a limited part of the network only --
 	  e.g., for the access network -- congestion exposure and
 	  sender adaptation could involve the mobile nodes or not, or,
-	  finally, the CONEX feedback loop could extend beyond a
+	  finally, the ConEx feedback loop could extend beyond a
 	  single operator's domain or not.
 	</t>
 
 	<t>
-	  We present three different deployment scenarios for
+	  We present four different deployment scenarios for
 	  congestion exposure in the figures below:
 	  <list style="numbers">
 	    <t>
-	      In <xref target="fig.deployment-option0"/> CONEX is
+	      In <xref target="fig.deployment-option0"/> ConEx is
 	      supported by servers for sending data (here: web servers
 	      in the Internet and caches in an operator's network) but
 	      not by UEs (neither for receiving nor sending). An
 	      operator who chooses to run a policing function on the
-	      network ingress (e.g., on the P-GW) can still benefit
-	      from congestion exposure without requiring any change on
-	      UEs.
+	      network ingress, e.g., on the P-GW (Packet Data Network
+	      -- PDN -- Gateway) can still benefit from congestion
+	      exposure without requiring any change on UEs.
 	    </t>
 	    <t>
-	      CONEX is universally employed between operators (as
+	      ConEx is universally employed between operators (as
 	      depicted in <xref target="fig.deployment-option1"/>),
-	      with an end-to-end CONEX feedback loop. Here, operators
+	      with an end-to-end ConEx feedback loop. Here, operators
 	      could still employ local policies, congestion accounting
 	      schemes etc., and they could use information about
 	      congestion contribution for determining interconnection
@@ -761,11 +615,11 @@ Adding ConEx support however might
 	      other.
 	    </t>
 	    <t>
-	     Isolated CONEX domains as depicted in <xref
-	     target="fig.deployment-option2"/>, where CONEX is solely
+	     Isolated ConEx domains as depicted in <xref
+	     target="fig.deployment-option2"/>, where ConEx is solely
 	     applied locally, in the operator network, and there is no
 	     end-to-end congestion exposure. This could be the case
-	     when CONEX is only implemented in a few networks, or when
+	     when ConEx is only implemented in a few networks, or when
 	     operators decide to not expose ECN and account for
 	     congestion for inter-domain traffic. Independent of the
 	     actual scenario, it is likely that there will be border
@@ -793,11 +647,11 @@ Adding ConEx support however might
       </t>
 
 
-      <figure title="CONEX support on servers and caches" anchor="fig.deployment-option0">
+      <figure title="ConEx support on servers and caches" anchor="fig.deployment-option0">
         <artwork>
                                   +------------+ 
                                   | Web server |
-                                  | w/ CONEX   |
+                                  | w/ ConEx   |
                                   +------------+
                                             |        
                                             |
@@ -812,7 +666,7 @@ Adding ConEx support however might
 |                                           |       |
 |                                     +-----------+ |
 |                                     | Web cache | |
-|                                     | w/ CONEX  | |
+|                                     | w/ ConEx  | |
 |                                     +-----------+ |
 |                                           |       |
 |  +----+     +-------+     +-------+     +-------+ |
@@ -825,7 +679,7 @@ Adding ConEx support however might
 	 </figure>
 
 
-      <figure title="CONEX deployment across operator domains" anchor="fig.deployment-option1">
+      <figure title="ConEx deployment across operator domains" anchor="fig.deployment-option1">
         <artwork>
 -----------------------------------------------------
 |  +----+     +-------+     +-------+     +-------+ |
@@ -852,10 +706,10 @@ Adding ConEx support however might
 	 </figure>
 
 
-         <figure title="CONEX deployment in a single operator domain" anchor="fig.deployment-option2">
+         <figure title="ConEx deployment in a single operator domain" anchor="fig.deployment-option2">
         <artwork>
 -----------------------------------------------------
-|   |---            CONEX path            ---|      |
+|   |---            ConEx path            ---|      |
 |   v                                        v      |
 |  +----+     +-------+     +-------+     +-------+ |
 |  | UE |=====|  eNB  |=====|  S-GW |=====|  P-GW | |
@@ -881,7 +735,7 @@ Adding ConEx support however might
 	 </figure>
 
 
-         <figure title="CONEX-lite deployment" anchor="fig.deployment-option3">
+         <figure title="ConEx-lite deployment" anchor="fig.deployment-option3">
         <artwork>
                 Backhaul Network     Core Network
                +---------------+  +--------------+
@@ -907,56 +761,13 @@ Adding ConEx support however might
 
 
 
-	 <t>
-	   We consider all three scenarios to be relevant and believe
-	   that all of them are within the scope of the CONEX WG
-	   charter. A more detailed description will be provided in a
-	   future version of this document.
-	 </t>
-
-<!--
-	 <section title="CONEX Deployment Across Operator Domains">
-	   <t>
-	     The details of this deployment option will be specified
-	     in a future revision of this document.
-	   </t>
-	 </section>
-
-	 <section title="CONEX deployment in a single operator domain">
-	   <t>
-	     The details of this deployment option will be specified
-	     in a future revision of this document.
-	   </t>
-	 </section>
-
--->
-	 
-
-	 
-<!--
-	<t>
-	  CONEX is expected to be first deployed in an operator's
-	  domain, e.g., within the access and core network, which is
-	  where CONEX entities would be placed. Operated networks such
-	  as PLMNs (Public Land Mobile Networks) may provide a further
-	  sub-structure of access networks (base stations and their
-	  controllers) and core networks (gateways, AAA entities
-	  etc.). For the discussion here, we focus on the notion of
-	  such operator networks that are connected to other networks
-	  (i.e., the Internet) but may employ domain-local congestion
-	  management policies.
-	</t>
--->
-
-
-
 
       </section>
 
 
-      <section title="Implementing CONEX Functions in the EPS">
+      <section title="Implementing ConEx Functions in the EPS">
 	<t>
-	  We expect a CONEX solution to consist of different functions
+	  We expect a ConEx solution to consist of different functions
 	  that should be considered when implementing congestion
 	  exposure in 3GPP's EPS. <xref
 	  target="I-D.ietf-conex-abstract-mech"/> is describing the
@@ -966,85 +777,56 @@ Adding ConEx support however might
 	    information in response to congestion feedback.</t>
 	    <t>Receivers that generate congestion feedback (leveraging
 	    existing behavior or requiring new functions). </t>
-	    <t>Audit functions that audit CONEX signals
+	    <t>Audit functions that audit ConEx signals
 	    against actual congestion, e.g., by monitoring flows or
 	    aggregate of flows. </t>
 	    <t>Policy devices that monitor congestion
 	    exposure information and act on the flows according to the
 	    operator's policy.</t>
 	  </list>
-
-<!--
-
-	  <list style="symbols">
-	    <t>
-	      The CONEX mechanism defines how congestion is actually
-	      indicated, how hosts can react to it, and how
-	      congestion contribution is finally declared. For
-	      ECN-based mechanisms, ECN marking in routers would be
-	      part of the mechanism.
-	    </t>
-	    <t>
-	      Policing functions are normally expected to manage the
-	      experienced/declared congestion in the network. They are
-	      considered important functions in an overall CONEX
-	      framework, as they provide incentives to
-	      users/applications to actually react to congestion
-	      indication. Also, it is assumed that accounting is
-	      performed based on function related to
-	      policing. Finally, implementations of CONEX may require
-	      the network to enforce proper congestion contribution
-	      declaration through auditing functions (e.g., as
-	      droppers in the Re-ECN proposal).
-	    </t>
-	  </list>
--->
-
-
 	</t>
 
 	<t>
 	  Two aspects are important to consider: 1) how the
-	  CONEX protocol mechanisms would be implemented and what
+	  ConEx protocol mechanisms would be implemented and what
 	  modifications to existing networks would be required and 2)
-	  where CONEX functional entities would be placed best (to
+	  where ConEx functional entities would be placed best (to
 	  allow for a non-invasive addition). We discuss these two
 	  aspects in the following sections.
 	</t>
 
-	<section title="CONEX Protocol Mechanisms">
+	<section title="ConEx Protocol Mechanisms">
 	  
 	  <t>
-	    As described in <xref
-	    target="I-D.briscoe-conex-initial-deploy"/>, the most
-	    important step in introducing CONEX (initially) is adding
-	    the congestion exposure functionality to senders. For an
-	    initial deployment, no further modification to senders and
-	    receivers would be required. Specifically, there is no
-	    fundamental dependency on ECN, i.e., CONEX can be
-	    introduced without requiring ECN to be implemented.
+	    The most important step in introducing ConEx (initially)
+	    is adding the congestion exposure functionality to
+	    senders. For an initial deployment, no further
+	    modification to senders and receivers would be
+	    required. Specifically, there is no fundamental dependency
+	    on ECN, i.e., ConEx can be introduced without requiring
+	    ECN to be implemented.
 	  </t>
 	  <t>
 	    Congestion exposure information for IPv6 <xref
 	    target="I-D.ietf-conex-destopt"/> is contained in a
 	    destination option header field, which requires minimal
 	    changes at senders and nodes that want to assess path
-	    congestion -- and that does not affect non-CONEX nodes in
+	    congestion -- and that does not affect non-ConEx nodes in
 	    a network.
 	  </t>
 	  <t>
 	    In 3GPP networks, IP tunneling is used intensively, i.e.,
 	    using either IP-in-GTP-U or PMIPv6 (i.e., IP-in-IP)
-	    tunnels. In general, the CONEX destination option of
+	    tunnels. In general, the ConEx destination option of
 	    encapsulated packets should be made available for network
 	    nodes on the tunnel path, i.e., a tunnel ingress should
-	    copy the CONEX destination option field to the outer
+	    copy the ConEx destination option field to the outer
 	    header. 
 	  </t>
 	  
 	  <t>
 	    For an effective and efficient capacity sharing, we
-	    envisage the deployment of ECN in conjunction with CONEX
+	    envisage the deployment of ECN in conjunction with ConEx
 	    so that ECN-enabled receivers and senders get more
 	    accurate and more timely information about their flows
 	    congestion contribution. ECN is already partially
@@ -1055,8 +837,7 @@ Adding ConEx support however might
 	    can be leveraged for voice codec adaptation. A complete,
 	    end-to-end support of ECN would require specification of
 	    tunneling behaviour, which should be based on <xref
-	    target="RFC6040"/> (for IP-in-IP tunnels) and on <xref
-	    target="I-D.briscoe-tsvwg-ecn-encap-guidelines"/>. Specifically,
+	    target="RFC6040"/> (for IP-in-IP tunnels). Specifically,
 	    a specification for tunneling ECN in GTP-U will be needed.
 	  </t>
 
@@ -1064,20 +845,20 @@ Adding ConEx support however might
 	</section>
 
 
-	<section title="CONEX Functions in the Mobile Network">
+	<section title="ConEx Functions in the Mobile Network">
 
 
 	<t>
 	  In the following, we discuss some possible placement
-	  strategies for CONEX functional entities (addressing both
+	  strategies for ConEx functional entities (addressing both
 	  policing and auditing functions) in the EPS and for possible
 	  optimizations for both the uplink and the downlink.
 	</t>
 	<t>
-	  In general, CONEX information (exposed congestion) is
+	  In general, ConEx information (exposed congestion) is
 	  declared by a sender and remains unchanged on the path, hence
-	  reading CONEX information (e.g., by policing functions) is
-	  placement-agnostic. Auditing CONEX normally requires
+	  reading ConEx information (e.g., by policing functions) is
+	  placement-agnostic. Auditing ConEx normally requires
 	  assessing declared congestion contribution and current
 	  actual congestion. If the latter is, for example, done using
 	  ECN, such a function would best be placed at the end of the
@@ -1085,15 +866,16 @@ Adding ConEx support however might
 	</t>
 
 	<t>
-	  In order to provide a comprehensive CONEX-based capacity
+	  In order to provide a comprehensive ConEx-based capacity
 	  management framework for EPS, it would be advantageous to
 	  consider user contribution to congestion for both the radio
 	  access and the core network. For a non-invasive introduction
-	  of CONEX, it can be beneficial to combine CONEX functions
+	  of ConEx, it can be beneficial to combine ConEx functions
 	  with existing logical EPS entities. For example, potential
-	  places for CONEX policing and auditing functions would then
-	  be eNBs, S-GWs or the P-GWs. Operator deployments may of
-	  course still provide additional intermediary CONEX-enabled
+	  places for ConEx policing and auditing functions would then
+	  be eNBs, S-GWs (Serving Gateways) or the P-GWs (Packet Data
+	  Network -- PDN -- Gateways). Operator deployments may of
+	  course still provide additional intermediary ConEx-enabled
 	  IP network elements.
 	</t>
 
@@ -1121,7 +903,7 @@ Adding ConEx support however might
 	  as tunneling between P-GWs and eNBs. Policing can require
 	  access to subscriber information (e.g., congestion
 	  contribution quota) or user-specific accounting, which
-	  suggests that the CONEX function could be co-located with
+	  suggests that the ConEx function could be co-located with
 	  the P-GW that already has an interface towards the PCRF.
 	</t>
 	<t>
@@ -1150,40 +932,16 @@ Adding ConEx support however might
 	  concentration points in the core network.
 	</t>
 	<t>
-	  Such a setup would enable all the CONEX use cases described
+	  Such a setup would enable all the ConEx use cases described
 	  in <xref target="sec.use-cases"/>, without requiring
 	  significant changes to the EPS architecture, while enabling
 	  operators to re-use existing infrastructure, specifically
 	  wireless base stations, PCRF and HSS systems.
 	</t>
 
-	
-	<!-- placing an uplink policer at the -->
-	<!--   base station can be beneficial, because if there is -->
-	<!--   congestion in the backhaul, traffic would be policed before -->
-	<!--   reaching the congested segments. On the other hand, -->
-	<!--   considering user mobility, operating uplink policers on base -->
-	<!--   stations may not be the optimal approach. -->
-
-
-
-	<!-- <t> -->
-	<!--   Dirk: [TODO] Should present example setups for downlink and -->
-	<!--   uplink? E.g., by saying, for downlink, you would most likely -->
-	<!--   place the policer on the P-GW and the audit functions on the -->
-	<!--   base station? For uplink: policer and audit on P-GW? -->
-	<!-- </t> -->
-
-	
-	<!-- <t> -->
-	<!--   Dirk [TODO]: we could then also say something on the scenario -->
-	<!--   mentioned by Bob where you have different levels of -->
-	<!--   policing. -->
-	<!-- </t> -->
-
 
 	<t>
-	  For CONEX functions on elements such as the S-GWs and P-GWs,
+	  For ConEx functions on elements such as the S-GWs and P-GWs,
 	  it is important to consider mobility and tunneling protocol
 	  requirements. LTE provides two alternative approaches:
 	  Proxy-Mobile-IPv6 (PMIPv6, <xref target="3GPP.23.402"/>) and
@@ -1202,50 +960,15 @@ Adding ConEx support however might
 	  updates, enforcement etc.
 	</t>
 
-	<!-- <t> -->
-
-	<!--   The CONEX mechanism allows operators to either have -->
-	<!--   congestion based policing in the uplink/downlink or in both -->
-	<!--   directions. With the given flexibility, the functional -->
-	<!--   entities can further be divided into uplink and downlink -->
-	<!--   directions e.g. uplink/downlink policer etc. -->
-	<!-- </t> -->
-	
-	<!-- <t> -->
-	<!--   Downlink policers would also be positioned best at border -->
-	<!--   gateways where they can process ingress traffic. Depending -->
-	<!--   on the specific architecture, up- and downlink policers -->
-	<!--   could also be collocated. -->
-	<!-- </t> -->
-
-<!--
-	<t>
-	  A more detailed description of the different approaches and
-	  their respective advantages will be provided in a future
-	  revision of this document.
-	</t>
--->
 	
       </section>
 
       </section>
 
-<!--
-	<section title="Summary">
-	  <t>
-	    perhaps summarize things by saying that there are really
-	    different options...
-	  </t>
-	</section>
--->
     </section>
 
     <section title="Summary">
       
-<!--
-    <section title="Implications for CONEX">
--->
-
 <t>
   We have shown how congestion exposure can be useful for efficient
   resource management in mobile communication networks. The premise
@@ -1257,23 +980,23 @@ Adding ConEx support however might
 </t>
 
 <t>
-  CONEX can be a mechanism that enables such capacity sharing, while
+  ConEx can be a mechanism that enables such capacity sharing, while
   allowing operators to apply these mechanisms in different ways, e.g.,
   for implementing different use cases as described in <xref
-  target="sec.use-cases"/>. It is important to note that CONEX is
+  target="sec.use-cases"/>. It is important to note that ConEx is
   fundamentally a mechanism that can be applied in different ways --
   to realize different operators policies.
 </t>
 
 <t>
-  CONEX may also be used to complement 3GPP-based mechanisms for
+  ConEx may also be used to complement 3GPP-based mechanisms for
   congestion management which are currently under development, such as
   in the User Plane Congestion Management (UPCON) work item described
   in <xref target="3GPP.23.705"/>.
 </t>
 
 <t>
-  We have described a few possibilities for adding CONEX as a
+  We have described a few possibilities for adding ConEx as a
   mechanism to 3GPP LTE-based networks and have shown how this could
   be done incrementally (starting with partial deployment). It is
   quite feasible that such partial deployments be done on a
@@ -1289,27 +1012,12 @@ Adding ConEx support however might
   such networks:
   <list style="hanging">
     <t hangText="Performance:">
-<!--
-      CONEX's capability of ensuring fairness could be used for
-      ensuring fairness in cellular networks. However, although the
-      idea looks promising, its advantages and performance have been
-      not yet been verified thoroughly yet.
--->
-
 In mobile communication networks -- with more expensive resources and
-more stringent QoS requirements -- the feasibility of applying CONEX
+more stringent QoS requirements -- the feasibility of applying ConEx
 as well as its performance and deployment scenarios need to be
 examined closer. For instance, a mobile communication network may
 encounter longer delay and higher loss rates, which can impose
 specific requirements on the timeliness and accuracy of congestion exposure information.
-<!--
- but most of the flows are
-short-lived.  In networks with fast changing conditions, it requires
-CONEX to expose latest congestion information in time.
-In addition, it
-is significant if it has the capability to indicate out-of-date
-congestion information to avoid mis-usage of such information.
--->
     </t>
     
     <t hangText="Mobility:">
@@ -1317,7 +1025,7 @@ congestion information to avoid mis-usage of such information.
       presence of user mobility compared to wired networks. As the
       user location changes, the same device can be connected to the
       network via different base stations (eNodeBs) or even go through
-      switching gateways. Thus, the CONEX scheme must to be able to
+      switching gateways. Thus, the ConEx scheme must to be able to
       carry latest congestion information per user/flow across
       multiple network nodes in real-time.
     </t>
@@ -1327,25 +1035,17 @@ congestion information to avoid mis-usage of such information.
       co-exist. In such cases, a user can use multiple access
       technologies for multiple applications or even a single
       application simultaneously.  If the congestion policies are set
-      based on each user, then CONEX should have the capability to
+      based on each user, then ConEx should have the capability to
       enable information exchange across multiple access domains.
 	  </t>
-<!--
-
-Do we refer here just to, for example, UTRAN and E-UTRAN co-existance or also to 3GPP and non-3GPP (e.g., WiFi) accesses?
--->
-
 	  <t hangText="Tunneling:">
 	    Both 3G and LTE networks make extensive usage of
-	    tunneling. The CONEX mechanism should be designed in a way
+	    tunneling. The ConEx mechanism should be designed in a way
 	    to support usage with different tunneling protocols such
 	    as PMIPv6 and GTP. For ECN-based congestion notification,
 	    <xref target="RFC6040"/> specifies how the ECN field of
 	    the IP header should be constructed on entry and exit from
-	    IP-in-IP tunnels, and <xref
-	    target="I-D.briscoe-tsvwg-ecn-encap-guidelines"/> provides
-	    guidelines for adding congestion notification to protocols
-	    that encapsulate IP.
+	    IP-in-IP tunnels.
 	  </t>
 
 	  <t hangText="Roaming:">
@@ -1354,7 +1054,7 @@ Do we refer here just to, for example, UTRAN and E-UTRAN co-existance or also to
 	    non-roaming and roaming scenarios. Roaming scenarios are
 	    typically more demanding regarding implementing operator
 	    policies, charging etc. It can be expected that this would
-	    also hold for deploying CONEX. A more detailed analysis of
+	    also hold for deploying ConEx. A more detailed analysis of
 	    this problem will be provided in a future revision of this
 	    document.
 	  </t>
@@ -1362,9 +1062,9 @@ Do we refer here just to, for example, UTRAN and E-UTRAN co-existance or also to
 	</list>
       </t>
       <t>
-	It is important to note that CONEX is intended to be used as a
+	It is important to note that ConEx is intended to be used as a
 	supplement and not a replacement to the existing QoS
-	mechanisms in mobile networks.  For example, CONEX deployed in
+	mechanisms in mobile networks.  For example, ConEx deployed in
 	3GPP mobile networks can provide useful input to the existing
 	3GPP PCC mechanisms by supplying more dynamic network
 	information to supplement the fairly static information used
@@ -1382,11 +1082,30 @@ Do we refer here just to, for example, UTRAN and E-UTRAN co-existance or also to
 
     <section anchor="Security" title="Security Considerations">
       <t>
-	Security considerations for applying CONEX to EPS include, but
-	are not limited to, the security considerations that apply to
-	the CONEX protocols.
+	For any ConEx deployment, it is important to apply appropriate
+	mechanisms to preclude applications and senders from
+	mis-stating their congestion contribution. <xref
+	target="I-D.ietf-conex-abstract-mech"/> discusses this problem
+	in detail and introduces the ConEx auditing concept. ConEx
+	auditing can be performed in different ways -- for example
+	flows can be constantly audited or only on-demand, when
+	network operators decide to do so. Also, coarse-grained
+	auditing may operate on flow aggregates for efficiency
+	reasons, whereas fine-grained auditing would inspect
+	individual flow. In mobile networks, there may be deployment
+	strategies that favor efficiency over very exact auditing. It
+	is important to understand the trade-offs and to apply ConEx
+	auditing appropriately.
+      </t>
+      <t>
+	The ConEx protocol specifications in <xref
+	target="I-D.ietf-conex-destopt"/> and <xref
+	target="I-D.ietf-conex-tcp-modifications"/> discuss additional
+	security considerations that would also apply to mobile
+	network deployments.
       </t>
 
+      
     </section>
 
   </middle>
@@ -1394,41 +1113,26 @@ Do we refer here just to, for example, UTRAN and E-UTRAN co-existance or also to
   <!--  *****BACK MATTER ***** -->
 
   <back>
-    <!-- References split into informative and normative -->
 
-    <!-- There are 2 ways to insert reference entries from the citation libraries:
-     1. define an ENTITY at the top, and use "ampersand character"RFC2629; here (as shown)
-     2. simply use a PI "less than character"?rfc include="reference.RFC.2119.xml"?> here
-        (for I-Ds: include="reference.I-D.narten-iana-considerations-rfc2434bis.xml")
-
-     Both are cited textually in the same manner: by using xref elements.
-     If you use the PI option, xml2rfc will, by default, try to find included files in the same
-     directory as the including file. You can also define the XML_LIBRARY environment variable
-     with a value containing a set of directories to search.  These can be either in the local
-     filing system or remote ones accessed by http (http://domain/dir/... ).-->
-
-
+<!--
     <references title="Normative References">
-	&RFC6789;
-    </references>
 
+    </references>
+-->
 
     <references title="Informative References">
 
-<!--
-    	&I-D.draft-ietf-conex-concepts-uses;
--->
+
+	&RFC6789;
+
 	&I-D.draft-ietf-conex-abstract-mech;
 
 	&I-D.draft-ietf-conex-destopt;
 
-	&I-D.draft-briscoe-conex-initial-deploy;
+	&I-D.draft-ietf-conex-tcp-modifications;
 
-	&I-D.draft-briscoe-tsvwg-ecn-encap-guidelines;
 
-<!--
 	&ts23203;
--->
 
 	&ts36300;
 
@@ -1549,16 +1253,50 @@ Do we refer here just to, for example, UTRAN and E-UTRAN co-existance or also to
 
       <t>
 	The EPS architecture and some of its standardized interfaces
-	are depicted in Figure 1. The EPS provides IP connectivity to
-	user equipment (UE) (i.e., mobile nodes) and access to
-	operator services, such as global Internet access and voice
-	communications. The EPS comprises the radio access network
-	called evolved UMTS Terrestrial Radio Access Network (E-UTRAN)
-	and the core network called Evolved Packet Core (EPC). QoS is
-	supported through an EPS bearer concept, providing <!--
-	hierarchical --> bindings to resource reservation within the
-	network.
+	are depicted in <xref target="fig1"/>. The EPS provides IP
+	connectivity to user equipment (UE) (i.e., mobile nodes) and
+	access to operator services, such as global Internet access
+	and voice communications. The EPS comprises the radio access
+	network called evolved UMTS Terrestrial Radio Access Network
+	(E-UTRAN) and the core network called Evolved Packet Core
+	(EPC). QoS is supported through an EPS bearer concept,
+	providing <!-- hierarchical --> bindings to resource
+	reservation within the network.
       </t>
+
+	<figure anchor="fig1" title="EPS architecture overview (Roaming Case)" >
+	<artwork>
+                                                   +-------+
+                          +-------+                | PCRF  |
+                          |  HSS  |               /+-------+\
+                          +-------+            Gx/           \Rx
+                              |                 /             \
+                              |                /               \
+                              |          +-------+    SGi  +-------+
+                              |          |  P-GW |=========|   AF  |
+                              |          +-------+         +-------+
+HPMN                          |              |
+------------------------------|--------------|----------------------
+VPLMN                         |              |
+                          +-------+          |
+                          |  MME  |          |
+                         /+-------+\         |S8
+                 S1-MME /           \        | 
+                       /             \S11    |
+                      /               \      |
+              +-----------+            \     |
++----+ LTE-Uu |           |             \    |
+| UE |========|           |    S1-U      +-------+
++----+        |  E-UTRAN  |==============| S-GW  |
+              |   (eNBs)  |              +-------+
+              |           |
+              +-----------+
+	</artwork>
+	</figure>
+
+<!-- Carlos: is it "IP Svr" or "IP Srv" in the figure above? -->
+
+
       
       <t>
 	The evolved NodeB (eNB), the Long Term Evolution (LTE) base
@@ -1612,120 +1350,9 @@ Do we refer here just to, for example, UTRAN and E-UTRAN co-existance or also to
 	congestion mechanism incorporated with the GTP/PMIPv6 protocols.
       </t>
   
-	<figure anchor="fig1" title="EPS architecture overview (Roaming Case)" >
-	<artwork>
-                                                   +-------+
-                          +-------+                | PCRF  |
-                          |  HSS  |               /+-------+\
-                          +-------+            Gx/           \Rx
-                              |                 /             \
-                              |                /               \
-                              |          +-------+    SGi  +-------+
-                              |          |  P-GW |=========|   AF  |
-                              |          +-------+         +-------+
-HPMN                          |              |
-------------------------------|--------------|----------------------
-VPLMN                         |              |
-                          +-------+          |
-                          |  MME  |          |
-                         /+-------+\         |S8
-                 S1-MME /           \        | 
-                       /             \S11    |
-                      /               \      |
-              +-----------+            \     |
-+----+ LTE-Uu |           |             \    |
-| UE |========|           |    S1-U      +-------+
-+----+        |  E-UTRAN  |==============| S-GW  |
-              |   (eNBs)  |              +-------+
-              |           |
-              +-----------+
-	</artwork>
-	</figure>
-
-<!-- Carlos: is it "IP Svr" or "IP Srv" in the figure above? -->
 
     </section>
 
-
-
-
-
-    <section title="ChangeLog">
-      <section title="draft-ietf-conex-mobile-04">
-	<t>
-	  <list style="symbols">
-	    <t>added conex lite to deployment scenarios</t>
-	    <t>added reference to LTE study paper at SIGCOMM-2013"</t>
-	    <t>restructured section 2 and 3 (moved 3GPP specifics out of section2</t>
-	    <t>added normative references section and put RFC6789 there</t>
-	    <t>updated references</t>
-	  </list>
-	</t>
-      </section>
-
-      <section title="draft-ietf-conex-mobile-03">
-	<t>
-	  <list style="symbols">
-	    <t>implemented suggestions for improving 3GPP EPS descriptions by Andreas Maeder</t>
-	    <t>mentioned 3GPP UPCON and added reference</t>
-	    <t>updated references</t>
-	    
-	    <t>In section 3.1 (CONEX as a Basis for Traffic
-	    Management), changed the wording in the first abstract of
-	    the enumerated list to state that ConEx can enable/enhance
-	    flow policy-based traffic management -- not DPI (as we
-	    earlier said). DPI is not the objective -- it is the tool
-	    that is currently used...</t>
-
-	    <t>merged section 3.4 (CONEX as a Form of Differential
-	    QoS) into 3.1 (CONEX as a Basis for Traffic
-	    Management)</t>
-
-	    <t>moved section 2 (Overview of 3GPP's Evolved Packet System (EPS)) to appendix.</t>
-
-	    <t>renamed section "CONEX Use Cases in the Mobile Communication Scenario" to "CONEX Use Cases in Mobile Communication Networks" </t>
-
-	    <t>updated TDF text in "CONEX as a Basis for Traffic Management" </t>
-
-	    <t>added reference to 3GPP UPCON to summary</t>
-
-	  </list>
-	</t>
-      </section>
-
-      <section title="Earlier">
-	<t>
-	  <list style="symbols">
-	    <t>changed title to "Mobile Communication Congestion Exposure Scenario" (was "use case")</t>
-	    <t>added new section 3 on "CONEX Uses Cases in mobile communication scenario"</t>
-	    <t>removed "Motivation" section in section 4</t>
-	    <t>removed "isolated connex deployment section in section 4"</t>
-	    <t>renamed "EPS integration" section in section 4 to "Additional EPS integration options"</t>
-	    <t>added a (still empty) summary section to section 4</t>
-	    <t>s/Re-ECN/CONEX/g</t>
-	    <t>added references</t>
-	    <t>added acknowledgments</t>
-	  </list>
-	</t>
-      </section>
-    </section>
-
-
-
-<!--
-        <section title="TODO">
-	  <t>
-	    <list>
-	      <t>section 4 needs to be better organized: there is
-	      currently too much overlap between our different parts</t>
-	      <t>we should reference the ECN tunneling spec</t>
-	      <t>converge different spelling of CONEX into one</t>
-	      <t>we are still saying "ECN" in 4.2</t>
-	      <t>we did not really talk about challenges such as mobility, path changes, variable delays so far</t>
-	    </list>
-	  </t>
-	</section>
--->
 
 
   </back>
