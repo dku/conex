@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0">
+  <uri resource="rfc7778-dku.xml" uri="../../../../../../../../../../cygdrive/d/home/kutscher/prj/ietf/conex/ericsson/conex/xml2rfc/xml2rfc-1.35/rfc2629.rnc"/>
   <uri resource="draft-ietf-conex-mobile.xml" uri="../../../xml2rfc/xml2rfc-1.35/rfc2629.rnc"/>
   <uri resource="draft-conex-mobile.xml" uri="../../../xml2rfc/xml2rfc-1.35/rfc2629.rnc"/>
 </locatingRules>

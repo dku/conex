@@ -145,17 +145,8 @@
     <keyword>congestion exposure</keyword> 
     <keyword>mobile communications</keyword>
 
-<!-- [rfced] *ADs, please review the following changes and let us know if you
-approve. These changes were made by the authors after the document was
-approved and submitted to the RFC Editor. The changes are highlighted in this
-diff file: http://www.rfc-editor.org/authors/rfc7778-diff.html.
-
-- Updates to first paragraph of Section 3
-- Deletion of last paragraph of Section 3.1
--->
-
-
-<!-- [rfced]  Acronyms
+<!--
+[rfced]  Acronyms
 
 a) How should "CE" be expanded in this document? Our abbreviations
 list has three possible expansions: Customer Edge (CE), Control Element
@@ -166,12 +157,28 @@ list has three possible expansions: Customer Edge (CE), Control Element
     or dropped (or ECN-CE marked) between the tunnel sender and
     receiver.
 
+
+A: Congestion Experienced
+   We expanded the acronym at the first location we use it now
+
+
 b) How should the acronyms "GTP-U" and "GTP-C" be expanded?
+
+A:
+GTP User Data Tunneling
+GTP Control
+
+We have added this to acronym list and referenced the corresponding specification.
+
 
 c) May we add the following note after Figure 4 to explain the acronynm "DL"?
 We could also add this to the Acronyms section.
 
 Note: DL stands for "downlink".
+
+A: yes, we have added the sentence. It's not important enough to add it to the acronym section.
+
+
 
 d) Should the expansion for "E-UTRAN" in the following sentence be updated
 to "Evolved Universal Terrestrial Radio Access Network (E-UTRAN)" to match the
@@ -180,7 +187,10 @@ usage in 3GPP TS 23.401 and TS 36.300?
    The EPS
    comprises the radio access network called evolved UMTS Terrestrial
    Radio Access Network (E-UTRAN) and the core network called Evolved
-   Packet Core (EPC). 
+   Packet Core (EPC).
+
+A: yes, thanks for catching this. We have updated the text.
+
 
 e) The following acronyms only appear in Figure 5. Please let us know how
 these should be expanded. We will add a note following the figure with the
@@ -192,15 +202,27 @@ AF
 SGi
 Uu
 
+A: please just add the note following the figure - these are too specific for the general acronym section.
+
+
 f) We have added "HSS" to the Acronyms section. Please let us know any
 objections.
+
+A: thanks, that's fine.
+
 -->
+
+
+
 
 <!-- [rfced]  We note inconsistencies in the terms below throughout the text.
 Should these be uniform? If so, please let us know which form is preferred.
 
 eNodeB vs. eNB
 3GPP EPS vs. 3GPP's EPS
+
+A: Let's use "eNB" and "3GPP EPS" - we have updated the text accordingly.
+
 -->
 
     <abstract>
@@ -226,11 +248,13 @@ Perhaps
    Based on this discussion, this memo suggests a set
    of requirements for ConEx mechanisms that particularly apply to these
    mobile networks.
+
+A: Yes, that's fine.
+
 -->
 
-Based on this, this memo suggests a set of
-	requirements for ConEx mechanisms that apply to
-	these mobile networks in particular.
+Based on this discussion, this memo suggests a set of requirements for
+ConEx mechanisms that particularly apply to these mobile networks.
       </t>
     </abstract>
   </front>
@@ -288,13 +312,14 @@ Perhaps
    those in which the end hosts and the network that contains the
    destination end hosts are ConEx-enabled but other networks need not
    be.
+
+A: yes, that's better, thanks.
+
 -->
 
-In
-	particular, use cases where the end hosts and the network
-	that contains the destination end hosts are ConEx-enabled but
-	other networks need not be, are of interest for initial
-	deployment.
+In particular, use cases where the end hosts and the network that
+contains the destination end hosts are ConEx-enabled but other
+networks need not be, are of interest for initial deployment.
       </t>
 
       <t>
@@ -320,9 +345,9 @@ In
       <section title="Acronyms">
 	<t>
 	  In this section, we expand some acronyms that are used
-	  throughout the text. Most are explained and put in a
-	  system context in <xref target="appendix1"/> and the 3GPP
-	  specifications referenced there.
+	  throughout the text. Most are explained and put in a system
+	  context in <xref target="appendix1"/> and the 3GPP, ECN, and
+	  ConEx specifications referenced there.
 	  <list style="hanging">
 	    <t hangText="eNB"><vspace/>Evolved NodeB: LTE base station</t>
             <t hangText="HSS"><vspace/>Home Subscriber Server</t>
@@ -331,6 +356,9 @@ In
 	    tunnel endpoint for user-plane and control-plane protocols -- typically
 	    the GW to the Internet or an operator's service network</t>
 	    <t hangText="UE"><vspace/>User Equipment: mobile terminals</t>
+	    <t hangText="GTP"><vspace/>GPRS Tunneling Protocol <xref target="TS29060"/></t>
+	    <t hangText="GTP-U"><vspace/>GTP User Data Tunneling <xref target="TS29060"/></t>
+	    <t hangText="GTP-C"><vspace/>GTP Control <xref target="TS29060"/></t>
 	  </list>
 	</t>
       </section>
@@ -439,6 +467,9 @@ In
 <!--[rfced] The numbered list in Section 2.1 contains a sub-list under item
 #2. We updated this sub-list to use letters rather than numerals in order to
 differentiate it from the main list. Please let us know any objections.
+
+A: OK
+
 -->
 
 	      <list style="letters">
@@ -513,26 +544,26 @@ Perhaps
 Most of this traffic is likely to be classified as best-effort
 traffic without differentiating, for example, periodic OS updates and
 application store downloads from web-based (i.e., browser-based) communication
-or other real-time communication. 
+or other real-time communication.
+
+A: yes, that's fine.
+
 -->
 
-Most of this traffic is likely to be classified as best-effort
-traffic without differentiating, for example, periodic OS updates and
-application store downloads from web-based (i.e., browser-based) communication
-or other real-time communication.
-For many of the bulk data
-	transfers, completion times are not important within certain bounds;
-	therefore, if scavenger transports (or transports that are less than
-	best effort) such as
-	Low Extra Delay Background Transport (LEDBAT) <xref target="RFC6817"/> were used, it would
-  improve the overall utility of the network. The use of these
-  transports by the end user, however, needs to be incentivized.
-	ConEx could be used to build an incentive scheme, e.g., by giving
-	a larger bandwidth allowance to users 
-	that contribute less to congestion
-	or lowering the next monthly
-	subscription fee. In principle, this would
-	be possible to implement with current specifications.
+Most of this traffic is likely to be classified as best-effort traffic
+without differentiating, for example, periodic OS updates and
+application store downloads from web-based (i.e., browser-based)
+communication or other real-time communication.  For many of the bulk
+data transfers, completion times are not important within certain
+bounds; therefore, if scavenger transports (or transports that are
+less than best effort) such as Low Extra Delay Background Transport
+(LEDBAT) <xref target="RFC6817"/> were used, it would improve the
+overall utility of the network. The use of these transports by the end
+user, however, needs to be incentivized.  ConEx could be used to build
+an incentive scheme, e.g., by giving a larger bandwidth allowance to
+users that contribute less to congestion or lowering the next monthly
+subscription fee. In principle, this would be possible to implement
+with current specifications.
       </t>
     </section>
 
@@ -550,10 +581,14 @@ Original
 Perhaps
    3G and LTE networks provide extensive support for accounting and
    charging already, for example, see the Policy Charging Control (PCC)
-   architecture [3GPP.23.203]. 
+   architecture [3GPP.23.203].
+
+
+A: Yes, that's better (changed the text).
+
 -->
 	3G and LTE networks provide extensive support for accounting
-	and charging already, for example cf. the Policy Charging
+	and charging already, for example, see the Policy Charging
 	Control (PCC) architecture <xref target="TS23203"/>. In
 	fact, most operators today account transmitted data volume on
 	a very fine granular basis and either correlate monthly
@@ -586,21 +621,28 @@ network domain within such congestion volume accounting. This would be
 possible without requiring any support from the global Internet, especially
 since the typical scarce resources such as wireless
 access and mobile backhaul are all within this domain.
+
+A: our preferred version (also in the text now):
+
+Also, an operator-provided mobile communication network can be seen as
+a network domain that would allow for such congestion volume
+accounting. This would not require any support from the global Internet,
+especially since the typical scarce resources such as the wireless
+access and the mobile backhaul are all within this domain.
+
 -->
 
 
-Also, an operator-provided mobile
-	communication network can be seen as a network domain within
-	such congestion volume accounting would be possible, without
-	requiring any support from the global Internet, in particular
-	since the typical scarce resources such as the wireless access
-	and the mobile backhaul are all within this domain. Traffic
-	normally leaves/enters the operator's network via well-defined
-	egress/ingress points that would be ideal candidates for
-	policing functions. Moreover, in most commercially operated
-	networks, accounting is performed for both received and sent
-	data, which would facilitate congestion volume accounting as
-	well.
+Also, an operator-provided mobile communication network can be seen as
+a network domain that would allow for such congestion volume
+accounting. This would not require any support from the global Internet,
+especially since the typical scarce resources such as the wireless
+access and the mobile backhaul are all within this domain. Traffic
+normally leaves/enters the operator's network via well-defined
+egress/ingress points that would be ideal candidates for policing
+functions. Moreover, in most commercially operated networks,
+accounting is performed for both received and sent data, which would
+facilitate congestion volume accounting as well.
       </t>
 
       <t>
@@ -678,10 +720,14 @@ Perhaps
    Offload (SIPTO) and Local IP Address (LIPA) [3GPP.23.829],
    i.e., the idea that some traffic such as high-volume Internet traffic
    is actually not passed through the EPC but is offloaded at a "break-
-   out point" closer to (or in) the access network. 
+   out point" closer to (or in) the access network.
+
+A: Actually, it is "Local IP Access" - changed the text.
+
+
 -->
 	Another aspect to consider is the addition of Selected IP
-	Traffic Offload (SIPTO) and Local Breakout (LIPA)
+	Traffic Offload (SIPTO) and Local IP Access (LIPA)
 	<xref target="TR23829"/>), i.e., the idea that some traffic
 	such as high-volume Internet traffic is actually not passed
 	through the EPC but is offloaded at a "break-out point" closer
@@ -703,6 +749,9 @@ corresponding reference entry for "DPI-related work for EPS" in this sentence?
    congestion management is an acknowledged and important requirement
    for the EPS, also illustrated by the current DPI-related work for
    EPS.
+
+A: difficult to find a good citation for that. This is essentially common knowledge, and has been described by sources such as http://www.fiercewireless.com/tech/story/report-mobile-networks-expanding-use-deep-packet-inspection/2012-10-21 but we don't want to cite this. In our view, it is OK as is.
+
 -->
 
         Dynamic traffic and congestion management is an
@@ -724,7 +773,7 @@ corresponding reference entry for "DPI-related work for EPS" in this sentence?
       <t>
 	In 3GPP EPS, interfaces between all elements of the
 	architecture are subject to standardization, including UE
-	interfaces and eNodeB interfaces, so that a more general
+	interfaces and eNB interfaces, so that a more general
 	approach, involving more than a single operator's network,
 	can be feasible as well.
       </t>
@@ -737,7 +786,7 @@ corresponding reference entry for "DPI-related work for EPS" in this sentence?
     <t>
       In this section, we discuss a few options for how such a
       mechanism (and possibly additional policing functions) could
-      eventually be deployed in 3GPP's EPS.  Note that this
+      eventually be deployed in the 3GPP EPS.  Note that this
       description of options is not intended to be a complete set of
       possible approaches; it merely discusses the
       most promising options.
@@ -796,21 +845,17 @@ corresponding reference entry for "DPI-related work for EPS" in this sentence?
 	      "ConEx Lite" for mobile networks that is intended for
 	      initial deployment of congestion exposure concepts in
 	      LTE, specifically in the backhaul and core network
-	      segments. 
-
-
-As depicted in <xref
+	      segments.  As depicted in <xref
 	      target="fig.deployment-option3"/>, ConEx Lite allows a
 	      tunnel receiver to monitor the volume of bytes that has
-	      been lost or dropped (or ECN-CE marked) between the
-	      tunnel sender and receiver. For that purpose, a new
-	      field called the Byte
-	      Sequence Marker (BSN) is introduced to the tunnel header to
-	      identify the byte in the
-	      flow of data from the tunnel sender to the tunnel
-	      receiver. A policer at the tunnel sender is expected to
-	      react according to the tunnel congestion volume (see
-	      <xref target="conex-lite"/> for details).
+	      been lost, dropped, or ECN-CE (Congestion Experienced)
+	      marked between the tunnel sender and receiver. For that
+	      purpose, a new field called the Byte Sequence Marker
+	      (BSN) is introduced to the tunnel header to identify the
+	      byte in the flow of data from the tunnel sender to the
+	      tunnel receiver. A policer at the tunnel sender is
+	      expected to react according to the tunnel congestion
+	      volume (see <xref target="conex-lite"/> for details).
 	    </t>
 	  </list>
       </t>
@@ -928,7 +973,9 @@ As depicted in <xref
         </artwork>
 	 </figure>
 
-
+	 <t>
+	   Note: DL stands for "downlink".
+	 </t>
 
 
       </section>
@@ -938,7 +985,7 @@ As depicted in <xref
 	<t>
 	  We expect a ConEx solution to consist of different functions
 	  that should be considered when implementing congestion
-	  exposure in 3GPP's EPS. <xref
+	  exposure in the 3GPP EPS. <xref
 	  target="RFC7713"/> describes the
 	  following congestion exposure components:
 	  <list style="symbols">
@@ -998,14 +1045,18 @@ Or
    minimal changes at senders and nodes that want to assess path
    congestion. The destination option header field does not affect non-CONEX
    nodes in a network.
+
+A: Yes, option 2 is clearer.
+
+
 -->
 	  <t>
 	    Congestion exposure information for IPv6 <xref
-	    target="CONEX-DESTOPT"/> is contained in a
-	    destination option header field, which requires minimal
-	    changes at senders and nodes that want to assess path
-	    congestion -- and that does not affect non-ConEx nodes in
-	    a network.
+	    target="CONEX-DESTOPT"/> is contained in a destination
+	    option header field, which requires minimal changes at
+	    senders and nodes that want to assess path congestion. The
+	    destination option header field does not affect non-ConEx
+	    nodes in a network.
 	  </t>
 	  <t>
 	    In 3GPP networks, IP tunneling is used intensively, i.e.,
@@ -1136,14 +1187,16 @@ Perhaps
    PCRF but to perform policing actions in the access network (i.e., in
    eNBs). For example, the traffic is policed at the ingress before it reaches
    concentration points in the core network.
--->
 
-          A likely approach can be to monitor congestion
-	  exposure on central gateway nodes (such as P-GWs) that
-	  provide the required interfaces to the PCRF but to perform
-	  policing actions in the access network, i.e., in eNBs, e.g., to
-	  police traffic at the ingress, before it reaches
-	  concentration points in the core network.
+
+A: yes, thanks (updated the text).
+
+-->
+A likely approach can be to monitor congestion exposure on central
+gateway nodes (such as P-GWs) that provide the required interfaces to
+the PCRF but to perform policing actions in the access network (i.e.,
+in eNBs). For example, the traffic is policed at the ingress before it
+reaches concentration points in the core network.
 	</t>
 	<t>
 	  Such a setup would enable all the ConEx use cases described
@@ -1239,7 +1292,7 @@ specific requirements on the timeliness and accuracy of congestion exposure info
       networks is the
       presence of user mobility. As the
       user location changes, the same device can be connected to the
-      network via different base stations (eNodeBs) or even go through
+      network via different base stations (eNBs) or even go through
       switching gateways. Thus, the ConEx scheme must to be able to
       carry the latest congestion information per user/flow across
       multiple network nodes in real time.
@@ -1377,6 +1430,11 @@ Reference entries with updated versions/dates:
               and Evolved Universal Terrestrial Radio Access Network
               (E-UTRAN); Overall description; Stage 2", 3GPP TS 36.300
               10.11.0, September 2013.
+
+
+A: Thanks, yes, please update all of the 3GPP references
+
+
 -->
 
 <!--draft-ietf-conex-abstract-mech-13: Now RFC 7713-->
@@ -1600,6 +1658,11 @@ http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=
    [dash]     ISO/IEC, "ISO/IEC 23009-1: Information Technology -
               Dynamic Adaptive Streaming over HTTP (DASH) -",
               April 2012.
+
+
+A: yes, thanks
+
+
 -->
 
 	<reference anchor="dash">
@@ -1654,7 +1717,7 @@ http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=
     <section anchor="appendix1" title="Overview of 3GPP's EPS">
 
       <t>
-	This section provides an overview of 3GPP's "Evolved Packet
+	This section provides an overview of the 3GPP "Evolved Packet
 	System" (EPS <xref target="TS36300"/> <xref
 	target="TS23401"/>) as a specific example of a mobile
 	communication architecture. Of course, other architectures
@@ -1665,14 +1728,13 @@ http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=
       <t>
 	The EPS architecture and some of its standardized interfaces
 	are depicted in <xref target="fig1"/>. The EPS provides IP
-	connectivity to UE (i.e., mobile nodes) and
-	access to operator services, such as global Internet access
-	and voice communications. The EPS comprises the radio access
-	network called Evolved UMTS Terrestrial Radio Access Network
+	connectivity to UE (i.e., mobile nodes) and access to operator
+	services, such as global Internet access and voice
+	communications. The EPS comprises the radio access network
+	called Evolved Universal Terrestrial Radio Access Network
 	(E-UTRAN) and the core network called the Evolved Packet Core
 	(EPC). QoS is supported through an EPS bearer concept,
-	providing bindings to resource
-	reservation within the network.
+	providing bindings to resource reservation within the network.
       </t>
 
         <figure anchor="fig1" title="EPS Architecture Overview (Roaming Case)" >
@@ -1768,7 +1830,4 @@ reviewing the document and for providing helpful comments.</t>
 </section>
 
 
-  </back>
-</rfc>
-
-
+  </back> </rfc>
